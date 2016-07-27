@@ -13,3 +13,5 @@ After that, start nvim and run
 ```vim
 PlugUpdate | PlugUpgrade
 ```
+
+A good resource for learning vim is Steve's [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/).
