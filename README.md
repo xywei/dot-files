@@ -17,3 +17,7 @@ PlugUpdate | PlugUpgrade
 ```
 
 A good resource for learning vim is Steve's [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/).
+
+## ctags
+
+The .ctags is to maek ctags ignore some common directories. To use is, make a symlink as $HOME/.ctags.
