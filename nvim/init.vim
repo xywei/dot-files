@@ -49,6 +49,36 @@ set tags+=$HOME/Dropbox/Sources/tags;
 " try export TERM=xterm-256color
 set t_Co=256
 
+" Turn off blink in normal mode
+set gcr=n:blinkon0
+
+" Line numbers
+set number
+
+" Store more cmd history
+set history=10000
+
+" No sounds
+set visualbell
+
+" Reload files changed outside vim
+set autoread
+
+" Turn off swap files (often troubsome,
+" for example, when in shared folders)
+set noswapfile
+
+" Display all sorts of symbols that are easy to be messed up
+set list listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+
+" Wrap lines at convenient points
+set wrap
+set linebreak
+
+" Indentation
+set shiftwidth=2
+set softtabstop=2
+
 "--------------------------------------
 " TrimSpaces
 " get rid of trailing spaces
@@ -72,3 +102,23 @@ endfunction
 
 command -bar -nargs=? ShowSpaces call ShowSpaces(<args>)
 command -bar -nargs=0 -range=% TrimSpaces <line1>,<line2>call TrimSpaces()
+
+"--------------------------------------
+" Highlight cursor
+"--------------------------------------
+" Ctr+K for searching cursor by highlighting
+" current word
+hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white
+hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white
+function FindCursor()
+  if !exists("s:highlightcursor")
+    let s:highlightcursor=1
+    set cursorline
+    set cursorcolumn
+  else
+    unlet s:highlightcursor
+    set nocursorline
+    set nocursorcolumn
+  endif
+endfunction
+nnoremap <C-K> :call FindCursor()<CR>
