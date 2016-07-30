@@ -31,3 +31,6 @@
 # Debug files
 *.dSYM/
 *.su
+
+# Vim history file
+*.netrwhist
