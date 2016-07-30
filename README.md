@@ -21,3 +21,7 @@ A good resource for learning vim is Steve's [Learn Vimscript the Hard Way](http:
 ## ctags
 
 The .ctags is to maek ctags ignore some common directories. To use is, make a symlink as $HOME/.ctags.
+
+## clang-format
+
+There is a .clang-format file that is used to format C++ code. To use it, make a symlink as $HOME/.clang-format and pass -style=file to clang-format
