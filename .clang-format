@@ -3,6 +3,7 @@ BasedOnStyle: Google
 AlignEscapedNewlinesLeft: true
 AlignTrailingComments: true
 AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
 AllowAllParametersOfDeclarationOnNextLine: true
 
 ColumnLimit: 80
