@@ -2,6 +2,7 @@ BasedOnStyle: Google
 
 AlignEscapedNewlinesLeft: true
 AlignTrailingComments: true
+AlignConsecutiveAssignments: true
 AllowAllParametersOfDeclarationOnNextLine: true
 
 ColumnLimit: 80
