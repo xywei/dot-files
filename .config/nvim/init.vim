@@ -57,12 +57,47 @@ autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 " Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
 
-
 "--------------------------------------
 " vimtex
 "--------------------------------------
 " modern vim plugin
 Plug 'lervag/vimtex'
+
+"--------------------------------------
+" deoplete
+"--------------------------------------
+" Dark powered asynchronous completion framework
+" Note: deoplete requires Neovim with Python3 enabled.
+" If :echo has("python3") returns 1, then you're done.
+" Otherwise, you may enable it by running: pip3 install neovim
+" To invoke omni function: Ctrl+x Ctrl+o 
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+" Enable at startup
+let g:deoplete#enable_at_startup = 1
+" Disable auto-complete
+let g:deoplete#disable_auto_complete = 1
+" Make sure the autocompletion will actually trigger using the omnifuncs
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+" Alternatively, use Ctrl+l to manually complete
+inoremap <silent><expr><C-l> deoplete#mappings#manual_complete()
+
+"--------------------------------------
+" ulti-snipts, using snipptes from honza
+"--------------------------------------
+" Use <tab> to expand snipts
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+" Trigger configuration.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" Set :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 
 " Add plugins to &runtimepath
@@ -73,6 +108,12 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""
 " Add my own tag file for packages
 set tags+=$HOME/Dropbox/Sources/tags;
+
+" Filetype system
+filetype plugin indent on
+
+" Turn on omni completion
+set omnifunc=syntaxcomplete#Complete
 
 " Allow colors, if colors are still not displayed correctly,
 " try export TERM=xterm-256color
