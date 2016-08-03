@@ -41,15 +41,27 @@ then
     echo "Please check out that file, make your decisions, and re-run this script."
     read -p "Do you wish to skip this one and continue installing the rest?" yn
       case $yn in
-	[Yy]* ) echo Skipping..; return;;
-	[Nn]* ) echo Exiting..; exit 1; return;;
-	* ) echo "Please answer yes or no.";;
+	      [Yy]* ) echo Skipping..; return;;
+	      [Nn]* ) echo Exiting..; exit 1; return;;
+	      * ) echo "Please answer yes or no.";;
       esac
   fi
 else
-  ln -s $DOT_DIR/"$entry" $HOME/"$entry"
-  echo "Done."
-  return
+	if [ -L $HOME/"$entry" ];
+	then
+		echo "Target $HOME/$entry exists as a broken symlink!"
+		echo " >> $HOME/$entry is pointing to $(readlink $HOME/$entry)"
+		read -p "Force re-linking this entry to $DOT_DIR/$entry?" yn
+		case $yn in
+			[Yy]* ) rm -f $HOME/"$entry"; ln -s $DOT_DIR/"$entry" $HOME/"$entry"; echo "Done."; return;;
+			[Nn]* ) echo Skipping..; return;;
+			* ) echo "Please answer yes or no.";;
+		esac
+	else
+		ln -s $DOT_DIR/"$entry" $HOME/"$entry"
+		echo "Done."
+	fi
+	return
 fi
 }
 
