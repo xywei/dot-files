@@ -57,6 +57,14 @@ autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 " Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
 
+
+"--------------------------------------
+" vimtex
+"--------------------------------------
+" modern vim plugin
+Plug 'lervag/vimtex'
+
+
 " Add plugins to &runtimepath
 call plug#end()
 

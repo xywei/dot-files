@@ -39,8 +39,12 @@ then
   else
     echo "Target $HOME/$entry exists and is not a symlin!"
     echo "Please check out that file, make your decisions, and re-run this script."
-    echo "Aborting.."
-    exit 1
+    read -p "Do you wish to skip this one and continue installing the rest?" yn
+      case $yn in
+	[Yy]* ) echo Skipping..; return;;
+	[Nn]* ) echo Exiting..; exit 1; return;;
+	* ) echo "Please answer yes or no.";;
+      esac
   fi
 else
   ln -s $DOT_DIR/"$entry" $HOME/"$entry"
