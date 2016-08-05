@@ -95,6 +95,7 @@ Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsListSnippets="<c-u>"
 " Set :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
