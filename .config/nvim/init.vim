@@ -87,18 +87,24 @@ endif
 inoremap <silent><expr><C-l> deoplete#mappings#manual_complete()
 
 "--------------------------------------
-" ulti-snipts, using snipptes from honza
+" ulti-snipts
 "--------------------------------------
 " Use <tab> to expand snipts
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 " Trigger configuration.
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsListSnippets="<c-u>"
 " Set :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+
+"--------------------------------------
+" vim-orgmode
+"--------------------------------------
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -108,6 +114,10 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""
 " Add my own tag file for packages
 set tags+=$HOME/Dropbox/Sources/tags;
+
+" Add my own snipptes
+set runtimepath+=$HOME/.config/nvim/MySnips
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/MySnips']
 
 " Filetype system
 filetype plugin indent on
