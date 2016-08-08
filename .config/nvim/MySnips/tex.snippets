@@ -1,9 +1,81 @@
-snippet frac
+
+##################################################
+# Math symbols
+##################################################
+snippet frac "fractional" b
 \frac{$1}{$2} $0
 endsnippet
 
-snippet seq
+snippet p "partial derivative" b
+\frac{\partial $1}{\partial $2} $0
+endsnippet
+
+snippet d "derivative" b
+\frac{d $1}{d $2} $0
+endsnippet
+
+snippet div "divergence" b
+\nabla \cdot $0
+endsnippet
+
+snippet vec "vector" b
+\overrightarrow{$1} $0
+endsnippet
+
+snippet seq "sequence of stuff" b
 $1_1, $1_2, \dots, $1_$2 $0
 endsnippet
 
+##################################################
+# Equation 
+##################################################
+snippet eq "equation" b
+\begin{equation}\label{eqn:$1}
+$0
+\end{equation}
+endsnippet
+
+snippet eq* "un-numbered equation" b
+\begin{equation*}
+$0
+\end{equation*}
+endsnippet
+
+snippet al "align" b
+\begin{align}\label{eqn:$1}
+$2 & = $3 \\
+$4 & = $5
+\end{align}
+$0
+endsnippet
+
+snippet al* "un-numbered align" b
+\begin{align*}
+$2 & = $3 \\
+$4 & = $5
+\end{align*}
+$0
+endsnippet
+
+##################################################
+# Label
+##################################################
+snippet lab "label" b
+\label{${1:eqn:}${2:fig:}${3:tab:}${0}}
+endsnippet
+
+snippet labeqn "label for equations" b
+\label{eqn:${1}}
+$0
+endsnippet
+
+snippet labfig "label for figures" b
+\label{fig:${1}}
+$0
+endsnippet
+
+snippet labtab "label for tables" b
+\label{tab:${1}}
+$0
+endsnippet
 

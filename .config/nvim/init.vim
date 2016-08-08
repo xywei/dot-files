@@ -100,6 +100,12 @@ let g:UltiSnipsListSnippets="<c-u>"
 let g:UltiSnipsEditSplit="vertical"
 
 
+"--------------------------------------
+" vim-orgmode
+"--------------------------------------
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
+
 " Add plugins to &runtimepath
 call plug#end()
 
