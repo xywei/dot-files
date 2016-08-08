@@ -150,6 +150,10 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
+" Make the 81st column stand out 
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
 "--------------------------------------
 " TrimSpaces
 " get rid of trailing spaces
