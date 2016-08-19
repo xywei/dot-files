@@ -138,9 +138,6 @@ set number
 " Store more cmd history
 set history=10000
 
-" No sounds
-set visualbell
-
 " Reload files changed outside vim
 set autoread
 
