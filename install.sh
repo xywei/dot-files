@@ -9,7 +9,9 @@ DOT_FILES=(\
   ".ctags"\
   ".gitconfig"\
   ".clang-format"
-".config/nvim"\
+  ".config/nvim"\
+  ".TeXmacs/plugins"\
+  ".TeXmacs/progs"\
   )
 
 # Setup a single entry
