@@ -3,15 +3,15 @@
 # Math symbols
 ##################################################
 snippet frac "fractional" 
-\frac{$1}{$2} $0
+\frac{ $1 }{ $2 } $0
 endsnippet
 
 snippet p "partial derivative" 
-\frac{\partial $1}{\partial $2} $0
+\frac{\partial $1 }{\partial $2 } $0
 endsnippet
 
 snippet d "derivative" 
-\frac{d $1}{d $2} $0
+\frac{d $1 }{d $2 } $0
 endsnippet
 
 snippet div "divergence" 
@@ -19,7 +19,7 @@ snippet div "divergence"
 endsnippet
 
 snippet vec "vector" 
-\overrightarrow{$1} $0
+\overrightarrow{ $1 } $0
 endsnippet
 
 snippet seq "sequence of stuff" 
@@ -57,6 +57,10 @@ $4 & = $5
 $0
 endsnippet
 
+snippet name "Equation name"
+\tag{$1} $0
+endsnippet
+
 ##################################################
 # Label
 ##################################################
@@ -79,3 +83,24 @@ snippet labtab "label for tables"
 $0
 endsnippet
 
+
+##################################################
+# Bibtex
+##################################################
+snippet bib "Add bibliography" b
+\bibliography{${1}}
+\bibliographystyle{${2:plain}}
+$0
+endsnippet
+
+snippet cite "Citation"
+\cite{${1}} $0
+endsnippet
+
+##################################################
+# Structure
+##################################################
+snippet sec "New section" b
+\section{$1}
+$0
+endsnippet
