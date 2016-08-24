@@ -8,6 +8,7 @@ DOT_FILES=(\
   ".tmux.conf"\
   ".ctags"\
   ".gitconfig"\
+  ".latexmkrc"\
   ".clang-format"
   ".config/nvim"\
   ".TeXmacs/plugins"\

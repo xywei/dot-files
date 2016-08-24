@@ -2,12 +2,28 @@
 ##################################################
 # Math symbols
 ##################################################
+snippet m "Inline math"
+$ $1 $ $0
+endsnippet
+
 snippet frac "fractional" 
 \frac{ $1 }{ $2 } $0
 endsnippet
 
+snippet s "Subscript"
+_{ $1 } $0
+endsnippet
+
 snippet p "partial derivative" 
 \frac{\partial $1 }{\partial $2 } $0
+endsnippet
+
+snippet bf "Bold"
+\mathbf{ $1 } $0
+endsnippet
+
+snippet sq "Square root"
+\sqrt{ $1 } $0
 endsnippet
 
 snippet d "derivative" 
@@ -18,12 +34,44 @@ snippet div "divergence"
 \nabla \cdot $0
 endsnippet
 
+snippet q "Space"
+\quad $0
+endsnippet
+
+snippet int "Intrgral"
+\int_{ $1 }^{ $2 } $3 d $4 $0
+endsnippet
+
 snippet vec "vector" 
 \overrightarrow{ $1 } $0
 endsnippet
 
+snippet tensor "Tensor"
+\overleftrightarrow{ $1 } $0
+endsnippet
+
+snippet hat "\hat" 
+\hat { $1 } $0
+endsnippet
+
+snippet grad "Gradient" 
+\nabla $0
+endsnippet
+
 snippet seq "sequence of stuff" 
 $1_1, $1_2, \dots, $1_$2 $0
+endsnippet
+
+snippet ( "Big brackets"
+\left( $1 \right) $0
+endsnippet
+
+snippet [ "Big square brackets" 
+\left[ $1 \right] $0
+endsnippet
+
+snippet { "Big curly brackets" 
+\left\\{ $1 \right\\} $0
 endsnippet
 
 ##################################################
@@ -42,7 +90,7 @@ $0
 endsnippet
 
 snippet al "align" b
-\begin{align}\label{eqn:$1}
+\begin{align}
 $2 & = $3 \\
 $4 & = $5
 \end{align}
@@ -65,27 +113,34 @@ endsnippet
 # Label
 ##################################################
 snippet lab "label" 
-\label{${1:eqn:}${2:fig:}${3:tab:}${0}}
+\label{$1} $0
 endsnippet
 
-snippet labeqn "label for equations" 
-\label{eqn:${1}}
-$0
+snippet leqn "label for equations" 
+\label{eqn:${1}} $0
 endsnippet
 
-snippet labfig "label for figures" 
-\label{fig:${1}}
-$0
+snippet lfig "label for figures" 
+\label{fig:${1}} $0
 endsnippet
 
-snippet labtab "label for tables" 
-\label{tab:${1}}
-$0
+snippet ltab "label for tables" 
+\label{tab:${1}} $0
 endsnippet
 
+snippet lthm "label for theorems"
+\label{thm:$1} $0
+endsnippet
 
 ##################################################
-# Bibtex
+# Lists
+##################################################
+snippet i "Item" b
+\item $0
+endsnippet
+
+##################################################
+# References
 ##################################################
 snippet bib "Add bibliography" b
 \bibliography{${1}}
@@ -97,10 +152,33 @@ snippet cite "Citation"
 \cite{${1}} $0
 endsnippet
 
+snippet ref "Reference" 
+(\ref{$1}) $0
+endsnippet
+
+snippet cref "Clever ref"
+\cref{$1} $0
+endsnippet
+
+snippet crefrange "Clever ref range"
+\crefrange{$1}{$2} $0
+endsnippet
+
 ##################################################
 # Structure
 ##################################################
 snippet sec "New section" b
 \section{$1}
 $0
+endsnippet
+
+snippet ssec "New subsection" b
+\subsection{$1}
+$0
+endsnippet
+
+snippet begin "Environment" b
+\begin{$1}
+$0
+\end{$1}
 endsnippet
