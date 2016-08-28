@@ -13,6 +13,8 @@ DOT_FILES=(\
   ".config/nvim"\
   ".TeXmacs/plugins"\
   ".TeXmacs/progs"\
+  ".emacs.d/init.el"\
+  ".emacs.d/JxW_config"\
   )
 
 # Setup a single entry
@@ -75,6 +77,9 @@ else
   echo ERROR: Install.sh must be ran from under dot-files/. 1>&2
   exit 1
 fi
+
+mkdir -p $HOME/.config
+mkdir -p $HOME/.emacs.d
 
 for i in "${DOT_FILES[@]}"
 do
