@@ -28,6 +28,7 @@
 
 (setq my:el-get-packages
       '(org-mode
+        evil
 	yasnippet
 	color-theme-solarized
 	dash
