@@ -22,6 +22,10 @@ snippet bf "Bold"
 \mathbf{ $1 } $0
 endsnippet
 
+snippet bb "Blackboard bold"
+\mathbb{ $1 } $0
+endsnippet
+
 snippet sq "Square root"
 \sqrt{ $1 } $0
 endsnippet
@@ -52,6 +56,10 @@ endsnippet
 
 snippet hat "\hat" 
 \hat { $1 } $0
+endsnippet
+
+snippet star "star"
+^\star $0
 endsnippet
 
 snippet grad "Gradient" 
@@ -98,7 +106,7 @@ endsnippet
 
 snippet al "align" b
 \begin{align}
-$2 & = $3 \\
+$2 & = $3 \\\\
 $4 & = $5
 \end{align}
 $0
@@ -137,6 +145,14 @@ endsnippet
 
 snippet lthm "label for theorems"
 \label{thm:$1} $0
+endsnippet
+
+snippet lrmk "label for remarks"
+\label{rmk:$1} $0
+endsnippet
+
+snippet lsec "label for sections" 
+\label{sec:$1} $0
 endsnippet
 
 ##################################################
@@ -181,6 +197,11 @@ endsnippet
 
 snippet ssec "New subsection" b
 \subsection{$1}
+$0
+endsnippet
+
+snippet sssec "New subsubsection" b
+\subsubsection{$1}
 $0
 endsnippet
 
