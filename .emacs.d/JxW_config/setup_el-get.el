@@ -28,6 +28,7 @@
 
 (setq my:el-get-packages
       '(org-mode
+	org-bullets
         evil
 	yasnippet
 	color-theme-solarized
@@ -35,6 +36,7 @@
 	ob-ipython
 	org-reveal
 	yaml-mode
+	pdf-tools
         ))
 
 (el-get 'sync my:el-get-packages)
