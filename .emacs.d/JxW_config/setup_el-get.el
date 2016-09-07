@@ -36,7 +36,6 @@
 	ob-ipython
 	org-reveal
 	yaml-mode
-	pdf-tools
         ))
 
 (el-get 'sync my:el-get-packages)
