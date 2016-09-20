@@ -10,12 +10,20 @@ snippet frac "fractional"
 \frac{ $1 }{ $2 } $0
 endsnippet
 
-snippet s "Subscript"
+snippet _ "Long Subscript"
 _{ $1 } $0
+endsnippet
+
+snippet ^ "Long Superscript"
+^{ $1 } $0
 endsnippet
 
 snippet p "partial derivative" 
 \frac{\partial $1 }{\partial $2 } $0
+endsnippet
+
+snippet partial "Single partial"
+\partial $0
 endsnippet
 
 snippet bf "Bold"
@@ -44,6 +52,10 @@ endsnippet
 
 snippet ~ "Sim"
 \sim $0
+endsnippet
+
+snippet \ "Set minus"
+\setminus $0
 endsnippet
 
 snippet << "Far less than"
@@ -98,6 +110,10 @@ snippet int "Intrgral"
 \int_{ $1 }^{ $2 } $3 d $4 $0
 endsnippet
 
+snippet sum "Summation"
+\sum_{ $1 }^{ $2 } $3 d $0
+endsnippet
+
 snippet vec "vector" 
 \overrightarrow{ $1 } $0
 endsnippet
@@ -110,8 +126,28 @@ snippet hat "\hat"
 \hat { $1 } $0
 endsnippet
 
+snippet what "Wide hat"
+\widehat { $1 } $0
+endsnippet
+
+snippet dot "\dot"
+\dot{$1} $0
+endsnippet
+
+snippet . "Dot product"
+\cdot $0
+endsnippet
+
 snippet star "star"
 ^\star $0
+endsnippet
+
+snippet all "For all"
+\forall $0
+endsnippet
+
+snippet in "In"
+\in $0
 endsnippet
 
 snippet grad "Gradient" 
@@ -132,6 +168,41 @@ endsnippet
 
 snippet { "Big curly brackets" 
 \left\\{ $1 \right\\} $0
+endsnippet
+
+snippet mat "Matrix"
+\begin{matrix}
+$1
+\end{matrix}
+$0
+endsnippet
+
+snippet mat( "Matrix surrounded by parentheses"
+\begin{pmatrix}
+$1
+\end{pmatrix}
+$0
+endsnippet
+
+snippet mat[ "Matrix surrounded by square brackets"
+\begin{bmatrix}
+$1
+\end{bmatrix}
+$0
+endsnippet
+
+snippet mat| "Matrix surrounded by single vertical lines"
+\begin{vmatrix}
+$1
+\end{vmatrix}
+$0
+endsnippet
+
+snippet mat|| "Matrix surrounded by double vetival lines"
+\begin{Vmatrix}
+$1
+\end{Vmatrix}
+$0
 endsnippet
 
 ##################################################
