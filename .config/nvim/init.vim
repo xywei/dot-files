@@ -87,6 +87,11 @@ endif
 inoremap <silent><expr><C-l> deoplete#mappings#manual_complete()
 
 "--------------------------------------
+" deoplete-clang
+"--------------------------------------
+Plug 'zchee/deoplete-clang'
+
+"--------------------------------------
 " ulti-snipts
 "--------------------------------------
 " Use <tab> to expand snipts
