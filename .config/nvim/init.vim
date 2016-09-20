@@ -4,6 +4,56 @@
 call plug#begin('~/.vim/plugged')
 
 "--------------------------------------
+" Neomake
+"--------------------------------------
+Plug 'neomake/neomake'
+let g:neomake_ctags_maker = {
+    \ 'exe': 'ctags',
+    \ 'args': ['.'],
+    \ }
+" autocmd BufWritePre,BufRead *.cpp :Neomake! ctags
+
+"--------------------------------------
+" TagBar
+"--------------------------------------
+" Displays tags in a window, ordered by scope
+Plug 'majutsushi/tagbar'
+let g:tagbar_width = 50
+nmap tb :TagbarToggle<cr>
+
+let g:tagbar_type_tex = {
+            \ 'ctagstype' : 'latex',
+            \ 'kinds'     : [
+            \ 's:sections',
+            \ 'g:graphics:1',
+            \ 'l:labels:1',
+            \ 'r:refs:1',
+            \ 'p:pagerefs:1'
+            \ ],
+            \ 'sort'    : 0
+            \ }
+
+"--------------------------------------
+" CtrlP
+"--------------------------------------
+" Fuzzy search file/buffer/tag...
+Plug 'ctrlpvim/ctrlp.vim'
+" Keybinding
+let g:ctrlp_map = '<c-p>'
+" Configs
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+" Ignore irrelevant files
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+"--------------------------------------
 " vim-easy-align
 "--------------------------------------
 " Align stuff. Usage: gaip= (align paragraph w.r.t "=")
@@ -23,6 +73,7 @@ Plug 'tpope/vim-fugitive'
 " nerd-tree, load on toggle
 "--------------------------------------
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+map <C-n> :NERDTreeToggle<CR>
 
 "--------------------------------------
 " taglist
