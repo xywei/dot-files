@@ -140,6 +140,21 @@ inoremap <silent><expr><C-l> deoplete#mappings#manual_complete()
 " deoplete-clang
 "--------------------------------------
 Plug 'zchee/deoplete-clang'
+if has('unix')
+  let s:uname = system("uname")
+  " Assume that llvm is installed via homebrew on MacOS
+  " brew install llvm --with-clang
+  if s:uname == "Darwin\n"
+    let g:deoplete#sources#clang#libclang_path = '/usr/local/opt/llvm/lib/libclang.dylib'
+    let g:deoplete#sources#clang#clang_header = '/usr/local/opt/llvm/lib/clang'
+  endif
+endif
+
+"--------------------------------------
+" neoinclude
+"--------------------------------------
+" Include completion framework for neocomplete/deoplete
+Plug 'Shougo/neoinclude.vim'
 
 "--------------------------------------
 " ulti-snipts
