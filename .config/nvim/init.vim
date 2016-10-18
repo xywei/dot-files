@@ -100,12 +100,22 @@ Plug 'rhysd/vim-clang-format'
 " Customize format in .clang-format or _clang_format
 let g:clang_format#detect_style_file = 1
 " map to <Leader>cf in C++ code
-autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>= :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>= :ClangFormat<CR>
 " if you install vim-operator-user
-autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+autocmd FileType c,cpp,objc map <buffer><Leader>c <Plug>(operator-clang-format)
 " Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
+
+"--------------------------------------
+" Using yapf to format python code
+"--------------------------------------
+autocmd FileType python nnoremap <leader>= :0,$!yapf<Cr>
+
+"--------------------------------------
+" jedi-vim for Python auto completion
+"--------------------------------------
+Plug 'davidhalter/jedi-vim'
 
 "--------------------------------------
 " vimtex
@@ -135,6 +145,8 @@ if !exists('g:deoplete#omni#input_patterns')
 endif
 " Alternatively, use Ctrl+l to manually complete
 inoremap <silent><expr><C-l> deoplete#mappings#manual_complete()
+
+autocmd CompleteDone * pclose " To close preview window of deoplete automagically
 
 "--------------------------------------
 " deoplete-clang
