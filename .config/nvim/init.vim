@@ -87,6 +87,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 "--------------------------------------
+" vim-devicons for glyphs/icons
+"--------------------------------------
+Plug 'ryanoasis/vim-devicons'
+
+"--------------------------------------
 " vim-operator-user
 "--------------------------------------
 " define operators easily
