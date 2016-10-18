@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'neomake/neomake'
 let g:neomake_ctags_maker = {
     \ 'exe': 'ctags',
-    \ 'args': ['.'],
+    \ 'args': ['.'], 
     \ }
 " autocmd BufWritePre,BufRead *.cpp :Neomake! ctags
 
@@ -86,6 +86,9 @@ Plug 'xywei/taglist'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" to show glyphs
+let g:airline_powerline_fonts = 1
+
 "--------------------------------------
 " vim-operator-user
 "--------------------------------------
@@ -110,11 +113,13 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 "--------------------------------------
 " Using yapf to format python code
 "--------------------------------------
+" requires sudo pip3 install yapf
 autocmd FileType python nnoremap <leader>= :0,$!yapf<Cr>
 
 "--------------------------------------
 " jedi-vim for Python auto completion
 "--------------------------------------
+" requires sudo pip3 install jedi
 Plug 'davidhalter/jedi-vim'
 
 "--------------------------------------
@@ -130,7 +135,7 @@ Plug 'lervag/vimtex'
 " Note: deoplete requires Neovim with Python3 enabled.
 " If :echo has("python3") returns 1, then you're done.
 " Otherwise, you may enable it by running: pip3 install neovim
-" To invoke omni function: Ctrl+x Ctrl+o 
+" To invoke omni function: Ctrl+x Ctrl+o
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
@@ -191,6 +196,45 @@ Plug 'tpope/vim-speeddating'
 " Add plugins to &runtimepath
 call plug#end()
 
+"--------------------------------------
+" vim-devicons
+"--------------------------------------
+" This plugin must be loaded lastly
+" (vim-plug loads the plugins in the same order as they are registered)
+" The terminal's font must be set as one of the nerd-fonts
+Plug 'ryanoasis/vim-devicons'
+
+" loading the plugin
+let g:webdevicons_enable = 1
+
+" necessary for showing glyphs
+set encoding=utf8
+
+" adding the flags to NERDTree
+let g:webdevicons_enable_nerdtree = 1
+
+" adding to vim-airline's tabline
+let g:webdevicons_enable_airline_tabline = 1
+
+" adding to vim-airline's statusline
+let g:webdevicons_enable_airline_statusline = 1
+
+" ctrlp glyphs
+let g:webdevicons_enable_ctrlp = 1
+
+" whether or not to show the nerdtree brackets around flags
+let g:webdevicons_conceal_nerdtree_brackets = 1
+
+" use double-width(1) or single-width(0) glyphs
+" only manipulates padding, has no effect on terminal or set(guifont) font
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+
+" the amount of space to use after the glyph character (default ' ')
+let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+
+" Force extra padding in NERDTree so that the filetype icons line up vertically
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+
 """""""""""""""""""""""""""""""""""""""
 " Other configurations
 """""""""""""""""""""""""""""""""""""""
@@ -239,7 +283,7 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
-" Make the 81st column stand out 
+" Make the 81st column stand out
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 
