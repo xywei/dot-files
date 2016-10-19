@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'neomake/neomake'
 let g:neomake_ctags_maker = {
     \ 'exe': 'ctags',
-    \ 'args': ['.'], 
+    \ 'args': ['.'],
     \ }
 " autocmd BufWritePre,BufRead *.cpp :Neomake! ctags
 
@@ -264,6 +264,7 @@ set t_Co=256
 set gcr=n:blinkon0
 
 " Line numbers
+set relativenumber
 set number
 
 " Store more cmd history
@@ -337,9 +338,17 @@ endfunction
 nnoremap <C-K> :call FindCursor()<CR>
 
 "--------------------------------------
+" Smooth scrolling
+"--------------------------------------
+set scrolloff=8
+set nolazyredraw
+
+"--------------------------------------
 " Restore cursor position, window position, and last search after running a
 " command.
 "--------------------------------------
+set ruler
+
 function! Preserve(command)
   " Save the last search.
   let search = @/
