@@ -90,11 +90,6 @@ Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 
 "--------------------------------------
-" vim-devicons for glyphs/icons
-"--------------------------------------
-Plug 'ryanoasis/vim-devicons'
-
-"--------------------------------------
 " vim-operator-user
 "--------------------------------------
 " define operators easily
