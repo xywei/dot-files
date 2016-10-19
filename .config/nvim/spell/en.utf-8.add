@@ -24,3 +24,12 @@ TVD
 RK3
 Kutta
 DIRK3
+trilinos
+newton
+sacado
+jacobian
+preconditioners
+namespace
+dealii
+namespaces
+templatized
