@@ -33,3 +33,5 @@ namespace
 dealii
 namespaces
 templatized
+d'Alembert
+Hopf

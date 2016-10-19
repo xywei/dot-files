@@ -5,6 +5,7 @@ echo "==================================="
 echo Welcome to xywei"'"s dot files!
 echo "==================================="
 DOT_FILES=(\
+  ".bashrc"\
   ".tmux.conf"\
   ".ctags"\
   ".gitconfig"\
