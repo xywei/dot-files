@@ -62,6 +62,66 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+
+"--------------------------------------
+" vim-surround
+"--------------------------------------
+" Enable stuff like ds, cs and yss
+Plug 'tpope/vim-surround'
+
+
+"--------------------------------------
+" vim-commentary
+"--------------------------------------
+" Use gcc to comment out a line, gc to comment out selected
+Plug 'tpope/vim-commentary'
+" Set commentstring for files not supported by default
+autocmd FileType apache setlocal commentstring=#\ %s
+
+
+"--------------------------------------
+" delimitMate
+"--------------------------------------
+" Auto-completion for quotes, parens etc.
+Plug 'Raimondi/delimitMate'
+
+
+"--------------------------------------
+" emmet-vim
+"--------------------------------------
+" Fast html, css editing
+" Includes some snippets and commands
+Plug 'mattn/emmet-vim'
+" Enable just for html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+" Remap the default <C-Y> leader
+let g:user_emmet_leader_key='<C-Z>'
+
+
+"--------------------------------------
+" vim-javascript
+"--------------------------------------
+" For JavaScript development
+Plug 'pangloss/vim-javascript'
+" Enable syntax highlighting for JSDocs and NGDocs
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+" Enables syntax highlighting for Flow
+let g:javascript_plugin_flow = 1
+" Concealing Characters
+let g:javascript_conceal_function       = "ƒ"
+let g:javascript_conceal_null           = "ø"
+let g:javascript_conceal_this           = "@"
+let g:javascript_conceal_return         = "⇚"
+let g:javascript_conceal_undefined      = "¿"
+let g:javascript_conceal_NaN            = "ℕ"
+let g:javascript_conceal_prototype      = "¶"
+let g:javascript_conceal_static         = "•"
+let g:javascript_conceal_super          = "Ω"
+let g:javascript_conceal_arrow_function = "⇒"
+
+
 "--------------------------------------
 " vim-fugitive
 "--------------------------------------
