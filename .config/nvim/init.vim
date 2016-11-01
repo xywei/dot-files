@@ -171,6 +171,14 @@ autocmd FileType c,cpp,objc map <buffer><Leader>c <Plug>(operator-clang-format)
 nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 "--------------------------------------
+" vim-clang
+"--------------------------------------
+" Clang complete
+Plug 'justmao945/vim-clang'
+let g:clang_compilation_database='./build'
+let g:clang_cpp_options = '-std=c++14'
+
+"--------------------------------------
 " Using yapf to format python code
 "--------------------------------------
 " requires sudo pip3 install yapf
@@ -298,6 +306,12 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 """""""""""""""""""""""""""""""""""""""
 " Other configurations
 """""""""""""""""""""""""""""""""""""""
+" Enable mouse
+set mouse=a
+
+" Use system clipboard
+set clipboard=unnamed
+
 " Add my own tag file for packages
 set tags+=$HOME/Dropbox/Sources/tags;
 
@@ -333,7 +347,7 @@ set autoread
 set noswapfile
 
 " Display all sorts of symbols that are easy to be messed up
-set list listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+set list listchars=tab:>-,trail:⎵,nbsp:⎵
 
 " Wrap lines at convenient points
 set wrap
