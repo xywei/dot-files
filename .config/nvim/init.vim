@@ -4,6 +4,16 @@
 call plug#begin('~/.vim/plugged')
 
 "--------------------------------------
+" neovim-colors-solarized
+"--------------------------------------
+" using a fork that can use true color
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
+set termguicolors
+syntax enable
+set background=dark " or dark
+let g:solarized_menu=0
+
+"--------------------------------------
 " Neomake
 "--------------------------------------
 Plug 'neomake/neomake'
@@ -12,6 +22,19 @@ let g:neomake_ctags_maker = {
     \ 'args': ['.'],
     \ }
 " autocmd BufWritePre,BufRead *.cpp :Neomake! ctags
+
+"--------------------------------------
+" Clang based syntax highlighting
+"--------------------------------------
+" chromatica.nvim
+" To use it, you have to make a symlink of compile-commands.json
+" under the project root.
+" Since when chromatica initializes, it search the current directory
+" and the ancestor directories for these two files.
+" If both file are present, chromatica will combine the flags in them.
+Plug 'arakashic/chromatica.nvim'
+let g:chromatica#libclang_path='/usr/local/opt/llvm/lib/libclang.dylib'
+let g:chromatica#enable_at_startup=1
 
 "--------------------------------------
 " TagBar
@@ -174,9 +197,9 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 " vim-clang
 "--------------------------------------
 " Clang complete
-Plug 'justmao945/vim-clang'
-let g:clang_compilation_database='./build'
-let g:clang_cpp_options = '-std=c++14'
+" Plug 'justmao945/vim-clang'
+" let g:clang_compilation_database = './build'
+" let g:clang_cpp_options = '-std=c++14'
 
 "--------------------------------------
 " Using yapf to format python code
@@ -234,6 +257,7 @@ if has('unix')
     let g:deoplete#sources#clang#clang_header = '/usr/local/opt/llvm/lib/clang'
   endif
 endif
+let g:deoplete#sources#clang#clang_complete_database='./build'
 
 "--------------------------------------
 " neoinclude
@@ -260,9 +284,6 @@ let g:UltiSnipsEditSplit="vertical"
 "--------------------------------------
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
-
-" Add plugins to &runtimepath
-call plug#end()
 
 "--------------------------------------
 " vim-devicons
@@ -302,6 +323,13 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 
 " Force extra padding in NERDTree so that the filetype icons line up vertically
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+
+
+" Add plugins to &runtimepath
+call plug#end()
+
+" Colorscheme must be set after plug#end()
+colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""
 " Other configurations
