@@ -17,10 +17,14 @@ let g:solarized_menu=0
 " Neomake
 "--------------------------------------
 Plug 'neomake/neomake'
-let g:neomake_ctags_maker = {
-    \ 'exe': 'ctags',
-    \ 'args': ['.'],
-    \ }
+
+" We are using manual tag generation, see
+" below for details (command MakeTags)
+"
+" let g:neomake_ctags_maker = {
+    " \ 'exe': 'ctags',
+    " \ 'args': ['-R .'],
+    " \ }
 " autocmd BufWritePre,BufRead *.cpp :Neomake! ctags
 
 "--------------------------------------
@@ -60,20 +64,20 @@ let g:tagbar_type_tex = {
 " CtrlP
 "--------------------------------------
 " Fuzzy search file/buffer/tag...
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 " Keybinding
-let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_map = '<c-p>'
 " Configs
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_working_path_mode = 'ra'
 " Ignore irrelevant files
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" let g:ctrlp_custom_ignore = {
+  " \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  " \ 'file': '\v\.(exe|so|dll)$',
+  " \ 'link': 'some_bad_symbolic_links',
+  " \ }
 
 "--------------------------------------
 " vim-easy-align
@@ -337,11 +341,32 @@ colorscheme solarized
 " Enable mouse
 set mouse=a
 
+" Exploit vim's fuzzy search
+" search down into all subfolders
+" e.g., :find *.cpp + tab will give you all cpp files within
+" the project
+set path+=**
+
+" Display all matchings when we do tab complete
+set wildmenu
+
+" Using :find + * to do fuzzy file open,
+" and :b + sub_string to do buffer switch,
+" We can actually live without CtrlP plugin for the most
+" of the time
+
+" A command to make tags for the project
+" After generating the tags, use
+"   Ctrl+] to jump to tag
+"   g Ctrl+] to list all matches
+"   Ctrl+t to jump back
+command! MakeTags !ctags -R .
+
 " Use system clipboard
 set clipboard=unnamed
 
 " Add my own tag file for packages
-set tags+=$HOME/Dropbox/Sources/tags;
+" set tags+=$HOME/Dropbox/Sources/tags;
 
 " Add my own snipptes
 set runtimepath+=$HOME/.config/nvim/MySnips
