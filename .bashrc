@@ -1,7 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -93,14 +89,8 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+# Always print out compile commands
+alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -112,3 +102,32 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export TERM=screen-256color
+
+# An alias for starting GUI on Linux
+alias desk="startx --extension glx"
+
+# Just use neovim
+alias vim="nvim"
+
+# Disable middle click paste
+if hash xmodmap 2>/dev/null; then
+    xmodmap -e "pointer = 1 6 3 4 5 2" 2>/dev/null
+fi
+
+# Spack is under $HOME
+export SPACK_ROOT=$HOME/spack
+. $SPACK_ROOT/share/spack/setup-env.sh
+MODULES_HOME=`spack location -i environment-modules`
+source ${MODULES_HOME}/Modules/init/bash
+
+# Alias definitions.
+# You may want to put all your local additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
