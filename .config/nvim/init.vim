@@ -9,10 +9,12 @@ call plug#begin('~/.vim/plugged')
 " using a fork that can use true color
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 syntax enable
-" For older neovim versions (<0.1.5), add this to .bashrc/.profile:
+" For older neovim versions (<0.1.5), we need to
 " export NVIM_TUI_ENABLE_TRUE_COLOR=1
 if exists("&termguicolors")
   set termguicolors
+else
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 let g:solarized_menu=0
 set background=dark " or dark
