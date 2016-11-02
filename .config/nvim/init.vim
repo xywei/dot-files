@@ -444,6 +444,11 @@ command -bar -nargs=? ShowSpaces call ShowSpaces(<args>)
 command -bar -nargs=0 -range=% TrimSpaces <line1>,<line2>call TrimSpaces()
 
 "--------------------------------------
+" Change the cursor shape in the terminal
+"--------------------------------------
+:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+"--------------------------------------
 " Highlight cursor
 "--------------------------------------
 " Ctr+K for searching cursor by highlighting
