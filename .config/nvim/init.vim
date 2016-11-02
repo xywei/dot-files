@@ -498,3 +498,22 @@ function! Indent()
   call Preserve('normal gg=G')
 endfunction
 command -bar -nargs=0 -range=% Indent call Indent()
+
+"--------------------------------------
+" Auto-complete summary
+"--------------------------------------
+" Now you can use one of the following:
+"
+" 1. vim's defaualt keybindings, among which the
+"    awesome ones are:
+"    - Ctrl+x Ctrl+n  Just this file
+"    - Ctrl+x Ctrl+f  For filenames (under var path)
+"    - Ctrl+x Ctrl+]  For tags
+"
+"    - Ctrl+n         Everything specified by the 'complete' option
+"
+" 2. vim's omnifunc Ctrl+x Ctrl+o
+"    (often too verbose)
+"
+" 3. Deoplete plugin Ctrl+l (clang based)
+
