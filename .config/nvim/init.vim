@@ -11,11 +11,11 @@ Plug 'frankier/neovim-colors-solarized-truecolor-only'
 syntax enable
 " For older neovim versions (<0.1.5), add this to .bashrc/.profile:
 " export NVIM_TUI_ENABLE_TRUE_COLOR=1
-if exists('termguicolors')
+if exists("&termguicolors")
   set termguicolors
 endif
-set background=dark " or dark
 let g:solarized_menu=0
+set background=dark " or dark
 
 "--------------------------------------
 " Neomake
