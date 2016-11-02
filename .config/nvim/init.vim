@@ -4,14 +4,41 @@
 call plug#begin('~/.vim/plugged')
 
 "--------------------------------------
+" neovim-colors-solarized
+"--------------------------------------
+" using a fork that can use true color
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
+set termguicolors
+syntax enable
+set background=dark " or dark
+let g:solarized_menu=0
+
+"--------------------------------------
 " Neomake
 "--------------------------------------
 Plug 'neomake/neomake'
-let g:neomake_ctags_maker = {
-    \ 'exe': 'ctags',
-    \ 'args': ['.'],
-    \ }
+
+" We are using manual tag generation, see
+" below for details (command MakeTags)
+"
+" let g:neomake_ctags_maker = {
+    " \ 'exe': 'ctags',
+    " \ 'args': ['-R .'],
+    " \ }
 " autocmd BufWritePre,BufRead *.cpp :Neomake! ctags
+
+"--------------------------------------
+" Clang based syntax highlighting
+"--------------------------------------
+" chromatica.nvim
+" To use it, you have to make a symlink of compile-commands.json
+" under the project root.
+" Since when chromatica initializes, it search the current directory
+" and the ancestor directories for these two files.
+" If both file are present, chromatica will combine the flags in them.
+Plug 'arakashic/chromatica.nvim'
+let g:chromatica#libclang_path='/usr/local/opt/llvm/lib/libclang.dylib'
+let g:chromatica#enable_at_startup=1
 
 "--------------------------------------
 " TagBar
@@ -37,20 +64,20 @@ let g:tagbar_type_tex = {
 " CtrlP
 "--------------------------------------
 " Fuzzy search file/buffer/tag...
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 " Keybinding
-let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_map = '<c-p>'
 " Configs
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_working_path_mode = 'ra'
 " Ignore irrelevant files
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" let g:ctrlp_custom_ignore = {
+  " \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  " \ 'file': '\v\.(exe|so|dll)$',
+  " \ 'link': 'some_bad_symbolic_links',
+  " \ }
 
 "--------------------------------------
 " vim-easy-align
@@ -174,9 +201,9 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 " vim-clang
 "--------------------------------------
 " Clang complete
-Plug 'justmao945/vim-clang'
-let g:clang_compilation_database='./build'
-let g:clang_cpp_options = '-std=c++14'
+" Plug 'justmao945/vim-clang'
+" let g:clang_compilation_database = './build'
+" let g:clang_cpp_options = '-std=c++14'
 
 "--------------------------------------
 " Using yapf to format python code
@@ -234,6 +261,7 @@ if has('unix')
     let g:deoplete#sources#clang#clang_header = '/usr/local/opt/llvm/lib/clang'
   endif
 endif
+let g:deoplete#sources#clang#clang_complete_database='./build'
 
 "--------------------------------------
 " neoinclude
@@ -260,9 +288,6 @@ let g:UltiSnipsEditSplit="vertical"
 "--------------------------------------
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
-
-" Add plugins to &runtimepath
-call plug#end()
 
 "--------------------------------------
 " vim-devicons
@@ -303,17 +328,45 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 " Force extra padding in NERDTree so that the filetype icons line up vertically
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 
+
+" Add plugins to &runtimepath
+call plug#end()
+
+" Colorscheme must be set after plug#end()
+colorscheme solarized
+
 """""""""""""""""""""""""""""""""""""""
 " Other configurations
 """""""""""""""""""""""""""""""""""""""
 " Enable mouse
 set mouse=a
 
+" Exploit vim's fuzzy search
+" search down into all subfolders
+" e.g., :find *.cpp + tab will give you all cpp files within
+" the project
+set path+=**
+
+" Display all matchings when we do tab complete
+set wildmenu
+
+" Using :find + * to do fuzzy file open,
+" and :b + sub_string to do buffer switch,
+" We can actually live without CtrlP plugin for the most
+" of the time
+
+" A command to make tags for the project
+" After generating the tags, use
+"   Ctrl+] to jump to tag
+"   g Ctrl+] to list all matches
+"   Ctrl+t to jump back
+command! MakeTags !ctags -R .
+
 " Use system clipboard
 set clipboard=unnamed
 
 " Add my own tag file for packages
-set tags+=$HOME/Dropbox/Sources/tags;
+" set tags+=$HOME/Dropbox/Sources/tags;
 
 " Add my own snipptes
 set runtimepath+=$HOME/.config/nvim/MySnips
@@ -445,3 +498,22 @@ function! Indent()
   call Preserve('normal gg=G')
 endfunction
 command -bar -nargs=0 -range=% Indent call Indent()
+
+"--------------------------------------
+" Auto-complete summary
+"--------------------------------------
+" Now you can use one of the following:
+"
+" 1. vim's defaualt keybindings, among which the
+"    awesome ones are:
+"    - Ctrl+x Ctrl+n  Just this file
+"    - Ctrl+x Ctrl+f  For filenames (under var path)
+"    - Ctrl+x Ctrl+]  For tags
+"
+"    - Ctrl+n         Everything specified by the 'complete' option
+"
+" 2. vim's omnifunc Ctrl+x Ctrl+o
+"    (often too verbose)
+"
+" 3. Deoplete plugin Ctrl+l (clang based)
+
