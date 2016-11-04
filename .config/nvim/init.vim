@@ -304,6 +304,10 @@ Plug 'vimwiki/vimwiki'
 " Put wiki files in Dropbox
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/'}]
 
+" Use <leader>o to toggle check lists
+nmap \tt <Plug>VimwikiToggleListItem
+vmap \tt <Plug>VimwikiToggleListItem
+
 "--------------------------------------
 " vim-devicons
 "--------------------------------------
