@@ -292,8 +292,17 @@ let g:UltiSnipsEditSplit="vertical"
 "--------------------------------------
 " vim-orgmode
 "--------------------------------------
-Plug 'jceb/vim-orgmode'
-Plug 'tpope/vim-speeddating'
+" Plug 'jceb/vim-orgmode'
+" Plug 'tpope/vim-speeddating'
+
+"--------------------------------------
+" vimwiki
+"--------------------------------------
+" does similar job as vim-orgmode 
+Plug 'vimwiki/vimwiki'
+
+" Put wiki files in Dropbox
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/'}]
 
 "--------------------------------------
 " vim-devicons
