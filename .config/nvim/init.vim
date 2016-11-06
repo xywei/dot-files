@@ -305,8 +305,8 @@ Plug 'vimwiki/vimwiki'
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/'}]
 
 " Use <leader>o to toggle check lists
-nmap \tt <Plug>VimwikiToggleListItem
-vmap \tt <Plug>VimwikiToggleListItem
+nmap <leader>tt <Plug>VimwikiToggleListItem
+vmap <leader>tt <Plug>VimwikiToggleListItem
 
 "--------------------------------------
 " vim-devicons
@@ -433,6 +433,9 @@ set expandtab
 " Make the 81st column stand out
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
+
+" A mapping to fix the syntax highlighting
+nnoremap <leader><esc> :syntax sync fromstart<CR>
 
 "--------------------------------------
 " TrimSpaces
