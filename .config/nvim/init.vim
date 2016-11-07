@@ -4,6 +4,11 @@
 call plug#begin('~/.vim/plugged')
 
 "--------------------------------------
+" vim-dealii-prm
+"--------------------------------------
+Plug 'xywei/vim-dealii-prm'
+
+"--------------------------------------
 " neovim-colors-solarized
 "--------------------------------------
 " using a fork that can use true color
