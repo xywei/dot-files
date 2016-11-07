@@ -1,0 +1,171 @@
+
+##################################################
+# File
+##################################################
+snippet header "File header" b
+/**
+ *  \file      `!p snip.rv = fn`
+ *  \brief     ${1:A brief file description}.
+ *  \details   ${2:A detailed file description}.
+ *  \date      Created on `!v strftime("%Y-%m-%d")`.
+ *  \author    Xiaoyu Wei (xywei@github)
+ */
+$0
+endsnippet
+
+##################################################
+# Class
+##################################################
+snippet class "Documented class" b
+/**
+ *  \brief     ${1:A Class}.
+ *  \details   ${2:A Class}.
+ *  \date      Created on `!v strftime("%Y-%m-%d")`.
+ *  \author    Xiaoyu Wei (xywei@github)
+ */
+class ${5:ClassName} { $0 };
+endsnippet
+
+##################################################
+# Function
+##################################################
+snippet func "Class function declaration" b
+/**
+ *  \fn        $1
+ *  \brief     ${2:A fuction}.
+ *  \param     ${3:arg1 an arguement}.
+ *  \exception ${4:std::out_of_range paramter out of range}.
+ *  \return    ${5:a double number}.
+ *  \date      Created on `!v strftime("%Y-%m-%d")`.
+ *  \author    Xiaoyu Wei (xywei@github)
+ */
+${1:Function declaration} {
+$0
+}
+endsnippet
+
+##################################################
+# Macro
+##################################################
+snippet define "Documented define" b
+/**
+ *  \def ${1:DefName}
+ *  ${2:Def Description}.
+ */
+#define $1 $0
+endsnippet
+
+##################################################
+# Doxygen
+##################################################
+
+snippet mainpage "Main page/index.html" b
+/**
+ *  \mainpage ${1:Main Page Title}
+ *  $0
+ */
+endsnippet
+
+snippet page "A standalone page" b
+/**
+ *  \page ${1:page_label} ${2:PageTitle}
+ *  \tableofcontents
+ *  ${3:Leading text}.
+ *  $0
+ */
+endsnippet
+
+snippet sec "Section"
+\section ${1:sec_label} ${2:SectionTitle}
+$0
+endsnippet
+
+snippet ssec "Subsection"
+\subsection ${1:subsec_label} ${2:SubsectionTitle}
+$0
+endsnippet
+
+snippet dox "Doxygen comment block" b
+/**
+ *  $1
+ */
+$0
+endsnippet
+
+snippet code "Code block"
+\code{${1:.cpp}}
+*  ${2:Code Snippet}
+*  \endcode $0
+endsnippet
+
+snippet dot "Dot graph"
+\dot
+*  ${2:DotGraph}
+*  \enddot
+endsnippet
+
+snippet d "Doxygen inline doc"
+/** $1 */ $0
+endsnippet
+
+snippet math "Doxygen inline math"
+\f$ $1 \f$ $0
+endsnippet
+
+snippet equation "Doxygen equations"
+\f[
+*  $1
+*  \f] $0
+endsnippet
+
+snippet at "Attention"
+\attention $0
+endsnippet
+
+snippet au "Author"
+\author $0
+endsnippet
+
+snippet br "Brief"
+\brief $0
+endsnippet
+
+snippet sa "See/See also"
+\sa $0
+endsnippet
+
+snippet todo "Todo"
+\todo
+endsnippet
+
+snippet ^ "Superscript"
+^{  $1 } $0
+endsnippet
+
+snippet _ "Subscript"
+_{ $1} $0
+endsnippet
+
+snippet frac "Fraction"
+\frac{ $1 }{ $2 } $0
+endsnippet
+
+snippet sqrt "Sqrt"
+\sqrt[ $1 ]{ $2 } $0
+endsnippet
+
+snippet sum "Summation"
+\sum_{ $1 }^{ $2 } $0
+endsnippet
+
+snippet int "Integral"
+\int_{ $1 }^{ $2 } $3 d $0
+endsnippet
+
+snippet pi "pi"
+\pi $0
+endsnippet
+
+snippet Pi "Pi"
+\Pi $0
+endsnippet

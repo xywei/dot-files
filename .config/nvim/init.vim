@@ -118,6 +118,8 @@ autocmd FileType apache setlocal commentstring=#\ %s
 " Auto-completion for quotes, parens etc.
 Plug 'Raimondi/delimitMate'
 
+" Do not automatically close stuff
+let delimitMate_autoclose = 0
 
 "--------------------------------------
 " emmet-vim
