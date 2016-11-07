@@ -6,6 +6,10 @@ snippet m "Inline math"
 $ $1 $ $0
 endsnippet
 
+snippet inf "Infinity"
+\infty $0
+endsnippet
+
 snippet frac "fractional" 
 \frac{ $1 }{ $2 } $0
 endsnippet
@@ -170,6 +174,10 @@ snippet { "Big curly brackets"
 \left\\{ $1 \right\\} $0
 endsnippet
 
+snippet < "Big <>"
+\left< $1 \right> $0
+endsnippet
+
 snippet mat "Matrix"
 \begin{matrix}
 $1
@@ -237,7 +245,7 @@ endsnippet
 
 snippet al* "un-numbered align" b
 \begin{align*}
-$2 & = $3 \\
+$2 & = $3 \\\\
 $4 & = $5
 \end{align*}
 $0
