@@ -48,7 +48,19 @@ Plug 'neomake/neomake'
 " and the ancestor directories for these two files.
 " If both file are present, chromatica will combine the flags in them.
 Plug 'arakashic/chromatica.nvim'
-let g:chromatica#libclang_path='/usr/local/opt/llvm/lib/libclang.dylib'
+if has('unix')
+  let s:uname = system("uname")
+  " Assume that llvm is installed via homebrew on MacOS
+  " brew install llvm --with-clang
+  if s:uname == "Darwin\n"
+    let g:chromatica#libclang_path='/usr/local/opt/llvm/lib/libclang.dylib'
+  endif
+  " Assme that this a an Arch linux, using clang from pacman
+  if s:uname == "Linux\n"
+    let g:chromatica#libclang_path='/usr/lib/libclang.so'
+  endif
+endif
+
 let g:chromatica#enable_at_startup=1
 
 "--------------------------------------
@@ -389,7 +401,9 @@ set wildmenu
 command! MakeTags !ctags -R .
 
 " Use system clipboard
-set clipboard=unnamed
+if (executable('pbcopy') || executable('xclip') || executable('xsel')) && has('clipboard')
+  set clipboard=unnamed
+endif
 
 " Add my own tag file for packages
 " set tags+=$HOME/Dropbox/Sources/tags;
