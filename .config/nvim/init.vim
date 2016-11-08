@@ -39,6 +39,12 @@ Plug 'neomake/neomake'
 " autocmd BufWritePre,BufRead *.cpp :Neomake! ctags
 
 "--------------------------------------
+" vim-indent-guides
+"--------------------------------------
+" visually display indent levels
+Plug 'nathanaelkane/vim-indent-guides'
+
+"--------------------------------------
 " Clang based syntax highlighting
 "--------------------------------------
 " chromatica.nvim
