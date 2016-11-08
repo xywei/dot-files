@@ -68,6 +68,7 @@ if has('unix')
 endif
 
 let g:chromatica#enable_at_startup=1
+let g:chromatica#highlight_feature_level=1
 
 "--------------------------------------
 " TagBar
@@ -291,8 +292,13 @@ if has('unix')
     let g:deoplete#sources#clang#libclang_path = '/usr/local/opt/llvm/lib/libclang.dylib'
     let g:deoplete#sources#clang#clang_header = '/usr/local/opt/llvm/lib/clang'
   endif
+  " Assme that this a an Arch linux, using clang from pacman
+  if s:uname == "Linux\n"
+    let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+    let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+  endif
 endif
-let g:deoplete#sources#clang#clang_complete_database='./build'
+let g:deoplete#sources#clang#clang_complete_database='./'
 
 "--------------------------------------
 " neoinclude
