@@ -40,7 +40,7 @@ snippet func "Class function declaration" b
  *  \author    Xiaoyu Wei (xywei@github)
  */
 ${1:Function declaration} {
-$0
+  $0
 }
 endsnippet
 
@@ -168,4 +168,55 @@ endsnippet
 
 snippet Pi "Pi"
 \Pi $0
+endsnippet
+
+
+##################################################
+# Catch Test Framework
+##################################################
+
+snippet catch "Add Catch" b
+#define CATCH_CONFIG_MAIN
+#include "${1:include/catch.hpp}"
+$0
+endsnippet
+
+snippet test "Add test case" b
+TEST_CASE( "${1:Test Name}", "[${2:Tag}]") {
+  $0
+}
+endsnippet
+
+snippet tsec "Section " b
+SECTION( "${1:Brief}" ) {
+  $0
+}
+endsnippet
+
+snippet req "Require" b
+REQUIRE( $0 );
+endsnippet
+
+snippet scen "Scenario" b
+SCENARIO( "${1:Test Name and description}", "[${2:Tag}]" ) {
+  $0
+}
+endsnippet
+
+snippet given "Given statement" b
+GIVEN( "${1:Condition brief}" ) {
+  $0
+}
+endsnippet
+
+snippet when "When statement" b
+WHEN( "${1:What happens}" ) {
+  $0
+}
+endsnippet
+
+snippet then "Then statement" b
+THEN( "${1:What is expected}" ) {
+  $0
+}
 endsnippet
