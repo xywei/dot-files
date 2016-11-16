@@ -13,17 +13,31 @@ snippet header "File header" b
 $0
 endsnippet
 
+snippet guard "Include guard" b
+#ifndef ${1:NAME}
+#define $1
+$0
+#endif
+endsnippet
+
+snippet namespace "Namespace" b
+namespace ${1:space_name} {
+  $0
+}
+endsnippet
+
 ##################################################
 # Class
 ##################################################
 snippet class "Documented class" b
 /**
- *  \brief     ${1:A Class}.
- *  \details   ${2:A Class}.
+ *  \class     ${1:ClassName}
+ *  \brief     ${2:A Class}.
+ *  \details   ${3:A Class}.
  *  \date      Created on `!v strftime("%Y-%m-%d")`.
  *  \author    Xiaoyu Wei (xywei@github)
  */
-class ${5:ClassName} { $0 };
+class $1 { $0 };
 endsnippet
 
 ##################################################
