@@ -46,7 +46,7 @@ endsnippet
 
 snippet cxe "Add executatble which links to catch" b
 ADD_EXECUTABLE(${1:TestBinaryName} ${2:TestSourceFiles})
-TARGET_LINK_LIBRARY($1 Catch)
+TARGET_LINK_LIBRARIES($1 Catch)
 $0
 endsnippet
 
