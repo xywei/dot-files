@@ -68,7 +68,7 @@ if has('unix')
 endif
 
 let g:chromatica#enable_at_startup=1
-let g:chromatica#highlight_feature_level=1
+let g:chromatica#highlight_feature_level=0
 
 "--------------------------------------
 " TagBar
@@ -266,15 +266,13 @@ Plug 'lervag/vimtex'
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Enable at startup
 let g:deoplete#enable_at_startup = 1
 " Disable auto-complete
 let g:deoplete#disable_auto_complete = 1
-" Make sure the autocompletion will actually trigger using the omnifuncs
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
+" Initialize input_patterns
+let g:deoplete#omni#input_patterns = {}
 " Alternatively, use Ctrl+l to manually complete
 inoremap <silent><expr><C-l> deoplete#mappings#manual_complete()
 
@@ -283,7 +281,7 @@ autocmd CompleteDone * pclose " To close preview window of deoplete automagicall
 "--------------------------------------
 " deoplete-clang
 "--------------------------------------
-Plug 'zchee/deoplete-clang'
+" Plug 'zchee/deoplete-clang'
 if has('unix')
   let s:uname = system("uname")
   " Assume that llvm is installed via homebrew on MacOS
@@ -431,7 +429,6 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/MySnips']
 " Filetype system
 filetype plugin indent on
 
-" Turn on omni completion
 set omnifunc=syntaxcomplete#Complete
 
 " Allow colors, if colors are still not displayed correctly,
