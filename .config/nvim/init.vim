@@ -298,7 +298,11 @@ if has('unix')
     let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
   endif
 endif
-let g:deoplete#sources#clang#clang_complete_database='./'
+if filereadable("./compile_commands.json")
+  let g:deoplete#sources#clang#clang_complete_database='./'
+elseif filereadable("./build/compile_commands.json")
+  let g:deoplete#sources#clang#clang_complete_database='./build/'
+endif
 
 "--------------------------------------
 " neoinclude
