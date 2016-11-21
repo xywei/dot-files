@@ -7,6 +7,7 @@ echo "==================================="
 DOT_FILES=(\
   ".bashrc"\
   ".tmux.conf"\
+  ".tmux-osx.conf"\
   ".ctags"\
   ".gitconfig"\
   ".latexmkrc"\
