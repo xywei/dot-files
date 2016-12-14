@@ -15,8 +15,9 @@ DOT_FILES=(\
   ".config/nvim"\
   ".TeXmacs/plugins"\
   ".TeXmacs/progs"\
-  ".emacs.d/init.el"\
-  ".emacs.d/JxW_config"\
+  ".spacemacs"
+#  ".emacs.d/init.el"\
+#  ".emacs.d/JxW_config"\
   )
 
 # Setup a single entry
