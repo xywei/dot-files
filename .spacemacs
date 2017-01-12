@@ -312,6 +312,10 @@ you should place your code here."
   ;; Org settings
   (setq org-directory "~/Nextcloud/LifeStyle")
   (setq org-agenda-files '("~/Nextcloud/LifeStyle/"))
+
+  ;; For Org's latex output
+  (require 'ox-extra)
+  (ox-extras-activate '(ignore-headlines))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
