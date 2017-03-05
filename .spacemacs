@@ -145,7 +145,7 @@ values."
                                :size 16
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 0.8)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -258,7 +258,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers 'relative
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -309,13 +309,17 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  ;; Org settings
+  ;; Turn on line number by default
+  ;; (global-linum-mode)
+
+  ;; Org directory settings
   (setq org-directory "~/Nextcloud/LifeStyle")
   (setq org-agenda-files '("~/Nextcloud/LifeStyle/"))
 
   ;; For Org's latex output
   (require 'ox-extra)
   (ox-extras-activate '(ignore-headlines))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
