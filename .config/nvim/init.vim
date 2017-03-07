@@ -321,6 +321,10 @@ let g:UltiSnipsListSnippets="<c-u>"
 " Set :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+"--------------------------------------
+" vim-tmux-navigator
+"--------------------------------------
+Plug 'christoomey/vim-tmux-navigator'
 
 "--------------------------------------
 " vim-orgmode

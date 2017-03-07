@@ -357,3 +357,16 @@ snippet begin "Environment" b
 $0
 \end{$1}
 endsnippet
+
+##################################################
+# TikZ
+##################################################
+snippet circle "Circle in tikz" b
+\draw ( ${1:0}, ${2:0} ) circle ( ${3:3cm} );
+$0
+endsnippet
+
+snippet arc "Arc in tikz" b
+\draw ( ${1:0}, ${2:0} ) arc ( ${3:0} : ${4:90} : ${5:3cm} );
+$0
+endsnippet
