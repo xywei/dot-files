@@ -325,7 +325,7 @@ let g:UltiSnipsEditSplit="vertical"
 "--------------------------------------
 " vim-orgmode
 "--------------------------------------
-" Plug 'jceb/vim-orgmode'
+Plug 'jceb/vim-orgmode'
 " Plug 'tpope/vim-speeddating'
 
 "--------------------------------------

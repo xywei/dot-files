@@ -11,13 +11,13 @@ DOT_FILES=(\
   ".ctags"\
   ".gitconfig"\
   ".latexmkrc"\
-  ".clang-format"
+  ".gdbinit"\
+  ".clang-format"\
   ".config/nvim"\
   ".TeXmacs/plugins"\
   ".TeXmacs/progs"\
-  ".spacemacs"
-#  ".emacs.d/init.el"\
-#  ".emacs.d/JxW_config"\
+  ".emacs.d/init.el"\
+  ".emacs.d/JxW_config"\
   )
 
 # Setup a single entry
