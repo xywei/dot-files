@@ -13,6 +13,7 @@ DOT_FILES=(\
   ".latexmkrc"\
   ".gdbinit"\
   ".clang-format"\
+  ".dircolors"\
   ".config/nvim"\
   ".TeXmacs/plugins"\
   ".TeXmacs/progs"\
