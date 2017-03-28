@@ -585,4 +585,3 @@ command -bar -nargs=0 -range=% Indent call Indent()
 "    (often too verbose)
 "
 " 3. Deoplete plugin Ctrl+l (clang based)
-
