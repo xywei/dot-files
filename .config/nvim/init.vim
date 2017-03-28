@@ -327,9 +327,6 @@ let g:UltiSnipsEditSplit="vertical"
 Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> <C-l> :TmuxNavigateLeft<cr>
-
-
 "--------------------------------------
 " vim-orgmode
 "--------------------------------------
