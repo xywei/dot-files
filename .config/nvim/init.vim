@@ -334,6 +334,18 @@ Plug 'jceb/vim-orgmode'
 " Plug 'tpope/vim-speeddating'
 
 "--------------------------------------
+" undotree
+"--------------------------------------
+Plug 'mbbill/undotree'
+nnoremap <leader>u :UndotreeToggle<cr>
+
+" enable persistent undo as recommended
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+endif
+
+"--------------------------------------
 " vimwiki
 "--------------------------------------
 " does similar job as vim-orgmode 

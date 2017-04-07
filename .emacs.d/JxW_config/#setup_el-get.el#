@@ -1,3 +1,5 @@
+jjjGkkkjuuuuuuujjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+jj
 
 ;; setup_el-get.el by JxW created on Jan 28 2016
 ;; This file check and installs el-get from melpa, using its online installer
@@ -38,7 +40,6 @@
 	org-reveal
 	yaml-mode
         dracula-theme
-        mode-icons
         ))
 
 (el-get 'sync my:el-get-packages)
