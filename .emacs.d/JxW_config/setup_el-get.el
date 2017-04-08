@@ -36,6 +36,8 @@
         s
 	ob-ipython
 	org-reveal
+        pdf-tools
+        org-pdfview
 	yaml-mode
         dracula-theme
         mode-icons
