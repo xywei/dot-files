@@ -12,6 +12,7 @@ DOT_FILES=(\
   ".gitconfig"\
   ".gitignore_global"\
   ".latexmkrc"\
+  ".jrnl_config"\
   ".gdbinit"\
   ".clang-format"\
   ".dircolors"\

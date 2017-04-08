@@ -29,9 +29,7 @@
 (setq my:el-get-packages
       '(org-mode
 	org-bullets
-        evil
 	yasnippet
-	color-theme-solarized
 	dash
         s
 	ob-ipython
@@ -41,6 +39,8 @@
 	yaml-mode
         dracula-theme
         mode-icons
+        restart-emacs
+	undo-tree
         ))
 
 (el-get 'sync my:el-get-packages)
