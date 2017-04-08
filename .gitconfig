@@ -23,3 +23,5 @@
 	helper = cache --timeout=3600
 [difftool.latex]
 	cmd = latexdiff "$LOCAL" "$REMOTE"
+[core]
+        excludesfile = ~/.gitignore_global

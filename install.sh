@@ -10,6 +10,7 @@ DOT_FILES=(\
   ".tmux-osx.conf"\
   ".ctags"\
   ".gitconfig"\
+  ".gitignore_global"\
   ".latexmkrc"\
   ".gdbinit"\
   ".clang-format"\
@@ -20,6 +21,16 @@ DOT_FILES=(\
   ".emacs.d/init.el"\
   ".emacs.d/JxW_config"\
   )
+
+# Option to update .gitignore
+while true; do
+  read -p "Do you wish to update .gitignore_global?" yn
+  case $yn in
+    [Yy]* ) sh generate_gitignore.sh; break;;
+    [Nn]* ) echo "Skipping.."; break;;
+    * ) echo "Please answer [y]es or [n]o.";;
+  esac
+done
 
 # Setup a single entry
 function setup_entry {
@@ -38,22 +49,26 @@ then
       echo "Target $HOME/$entry symlink exists but pointing to another file!"
       echo " >> $HOME/$entry is pointing to $(readlink $HOME/$entry)"
       echo " >> But I am trying to setup symlink to $DOT_DIR/$entry"
-      read -p "Do you wish to force re-linking this entry?" yn
-      case $yn in
-        [Yy]* ) rm -f $HOME/"$entry"; ln -s $DOT_DIR/"$entry" $HOME/"$entry"; echo "Done."; return;;
-        [Nn]* ) echo Skipping..; return;;
-        * ) echo "Please answer yes or no.";;
-      esac
+      while true; do
+        read -p "Do you wish to force re-linking this entry?" yn
+        case $yn in
+          [Yy]* ) rm -f $HOME/"$entry"; ln -s $DOT_DIR/"$entry" $HOME/"$entry"; echo "Done."; break;;
+          [Nn]* ) echo Skipping..; break;;
+          * ) echo "Please answer [y]es or [n]o.";;
+        esac
+      done
     fi
   else
     echo "Target $HOME/$entry exists and is not a symlin!"
     echo "Please check out that file, make your decisions, and re-run this script."
     read -p "Do you wish to skip this one and continue installing the rest?" yn
-    case $yn in
-      [Yy]* ) echo Skipping..; return;;
-      [Nn]* ) echo Exiting..; exit 1; return;;
-      * ) echo "Please answer yes or no.";;
-    esac
+    while true; do
+      case $yn in
+        [Yy]* ) echo Skipping..; break;;
+        [Nn]* ) echo Exiting..; exit 1;;
+        * ) echo "Please answer [y]es or [n]o.";;
+      esac
+    done
   fi
 else
   if [ -L $HOME/"$entry" ];
@@ -61,11 +76,13 @@ else
     echo "Target $HOME/$entry exists as a broken symlink!"
     echo " >> $HOME/$entry is pointing to $(readlink $HOME/$entry)"
     read -p "Force re-linking this entry to $DOT_DIR/$entry?" yn
-    case $yn in
-      [Yy]* ) rm -f $HOME/"$entry"; ln -s $DOT_DIR/"$entry" $HOME/"$entry"; echo "Done."; return;;
-      [Nn]* ) echo Skipping..; return;;
-      * ) echo "Please answer yes or no.";;
-    esac
+    while true; do
+      case $yn in
+        [Yy]* ) rm -f $HOME/"$entry"; ln -s $DOT_DIR/"$entry" $HOME/"$entry"; echo "Done."; break;;
+        [Nn]* ) echo Skipping..; break;;
+        * ) echo "Please answer [y]es or [n]o.";;
+      esac
+    done
   else
     ln -s $DOT_DIR/"$entry" $HOME/"$entry"
     echo "Done."

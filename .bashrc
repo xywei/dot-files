@@ -115,6 +115,9 @@ alias desk="startx --extension glx"
 # Just use neovim
 alias vim="nvim"
 
+# Run emacs with --no-window-system
+alias emacs="emacs -nw"
+
 # Disable middle click paste
 if hash xmodmap 2>/dev/null; then
     xmodmap -e "pointer = 1 6 3 4 5 2" 2>/dev/null
