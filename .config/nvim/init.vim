@@ -276,7 +276,7 @@ let g:deoplete#disable_auto_complete = 1
 " Initialize input_patterns
 let g:deoplete#omni#input_patterns = {}
 " Alternatively, use Ctrl+l to manually complete
-inoremap <silent><expr><C-F1> deoplete#mappings#manual_complete()
+inoremap <silent><expr><C-l> deoplete#mappings#manual_complete()
 
 autocmd CompleteDone * pclose " To close preview window of deoplete automagically
 
