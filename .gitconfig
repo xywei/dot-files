@@ -25,3 +25,4 @@
 	cmd = latexdiff "$LOCAL" "$REMOTE"
 [core]
         excludesfile = ~/.gitignore_global
+        editor = $(which nvim)
