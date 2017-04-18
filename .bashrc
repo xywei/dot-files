@@ -82,7 +82,9 @@ fi
 [ -e "/etc/DIR_COLORS" ] && DIR_COLORS="/etc/DIR_COLORS"
 [ -e "$HOME/.dircolors" ] && DIR_COLORS="$HOME/.dircolors"
 [ -e "$DIR_COLORS" ] || DIR_COLORS=""
-eval "`dircolors -b $DIR_COLORS`"
+if [ -x /usr/bin/dircolors ]; then
+  eval "`dircolors -b $DIR_COLORS`"
+fi
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -114,6 +116,7 @@ alias desk="startx --extension glx"
 
 # Just use neovim
 alias vim="nvim"
+alias vi="nvim"
 
 # Run emacs with --no-window-system
 alias emacs="emacs -nw"
@@ -138,3 +141,5 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Add cli-utils to PATH
+export PATH=$HOME/cli-utils:$PATH

@@ -21,6 +21,7 @@ DOT_FILES=(\
   ".TeXmacs/progs"\
   ".emacs.d/init.el"\
   ".emacs.d/JxW_config"\
+  "cli-utils"
   )
 
 # Option to update .gitignore
