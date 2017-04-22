@@ -4,6 +4,17 @@ case $- in
       *) return;;
 esac
 
+# Detect platform
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+   platform='freebsd'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='darwin'
+ fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -31,6 +42,13 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
     screen-256color) color_prompt=yes;;
 esac
+
+# For MacOS, add bash completions under Homebrew
+if [[ $platform == 'darwin' ]]; then
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+fi
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
