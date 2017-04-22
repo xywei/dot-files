@@ -166,6 +166,4 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Add cli-utils to PATH
-GPG_TTY=$(tty)
-
 export PATH=$HOME/cli-utils:$PATH
