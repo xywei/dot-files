@@ -1,28 +1,34 @@
 [user]
-	email = wxy0516@gmail.com
-	name = xywei
+        email = wxy0516@gmail.com
+        name = xywei
+        signingkey = F038F98DF34297D9
 [push]
-	default = simple
+        default = simple
 [alias]
-	mylog = log --pretty=format:'%h %s [%an]' --graph
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	br = branch
-	ds = diff --staged
-	wd = diff --word-diff --ignore-all-space
-	wds = diff --staged --word-diff --ignore-all-space
-	difftex = difftool -y -t latex
-	lg = log --oneline --reverse
-	dls = diff-tree --no-commit-id --name-status -r
-	st = status
-	co = checkout
-	br = branch
-	ci = commit
-	getroot = !pwd
-	beholdmyamazingcode = commit
+        mylog = log --pretty=format:'%h %s [%an]' --graph
+        lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+        br = branch
+        ds = diff --staged
+        wd = diff --word-diff --ignore-all-space
+        wds = diff --staged --word-diff --ignore-all-space
+        difftex = difftool -y -t latex
+        lg = log --oneline --reverse
+        dls = diff-tree --no-commit-id --name-status -r
+        st = status
+        co = checkout
+        br = branch
+        ci = commit
+        getroot = !pwd
+        beholdmyamazingcode = commit
 [credential]
-	helper = cache --timeout=3600
+        helper = cache --timeout=3600
 [difftool.latex]
-	cmd = latexdiff "$LOCAL" "$REMOTE"
+        cmd = latexdiff "$LOCAL" "$REMOTE"
 [core]
         excludesfile = ~/.gitignore_global
         editor = $(which nvim)
+[gpg]
+        program = gpg2
+[commit]
+        pgsign = true
+

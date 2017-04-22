@@ -116,6 +116,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # Always print out compile commands
 alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 
+# Enable custom password-store extensions
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
