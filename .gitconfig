@@ -30,5 +30,5 @@
 [gpg]
         program = gpg2
 [commit]
-        pgsign = true
+        gpgsign = true
 
