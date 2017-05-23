@@ -7,7 +7,7 @@ call plug#begin('~/.vim/plugged')
 " ale
 "--------------------------------------
 " Asynchronous Lint Engine
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 "--------------------------------------
 " vim-dealii-prm
