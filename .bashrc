@@ -19,6 +19,18 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+# There is a bug in MacOS at the moment.
+# See https://serverfault.com/questions/422908/how-can-i-prevent-the-warning-no-xauth-data-using-fake-authentication-data-for
+#if [ "$platform" == 'darwin' ]; then
+#  dispdir=`dirname $DISPLAY`
+#  dispfile=`basename $DISPLAY`
+#  dispnew="$dispdir/:0"
+#  if [ -e $DISPLAY -a "$dispfile" = "org.x:0" ]; then
+#    mv $DISPLAY $dispnew
+#  fi
+#  export DISPLAY=$dispnew
+#fi
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
