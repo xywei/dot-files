@@ -7,7 +7,15 @@ call plug#begin('~/.vim/plugged')
 " ale
 "--------------------------------------
 " Asynchronous Lint Engine
+" (Choose only one of ale and Neomake)
 " Plug 'w0rp/ale'
+
+"--------------------------------------
+" vim-obsession
+"--------------------------------------
+" A more powerful :mksession
+Plug 'tpope/vim-obsession'
+set statusline+='%{ObsessionStatus()}'
 
 "--------------------------------------
 " vim-dealii-prm
@@ -213,6 +221,9 @@ Plug 'vim-airline/vim-airline-themes'
 
 " to show glyphs
 let g:airline_powerline_fonts = 1
+
+" to display all buffers when there's only one tab open<Paste>
+let g:airline#extensions#tabline#enabled = 1
 
 "--------------------------------------
 " vim-operator-user
@@ -446,6 +457,9 @@ set path+=**
 
 " Display all matchings when we do tab complete
 set wildmenu
+
+" Use markers to fold
+set foldmethod=marker
 
 " Using :find + * to do fuzzy file open,
 " and :b + sub_string to do buffer switch,
