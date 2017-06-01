@@ -459,7 +459,9 @@ set path+=**
 set wildmenu
 
 " Use markers to fold
+" also enable space to trigger the fold in normal mode
 set foldmethod=marker
+nnoremap <space> za
 
 " Using :find + * to do fuzzy file open,
 " and :b + sub_string to do buffer switch,
