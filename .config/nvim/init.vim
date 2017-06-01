@@ -26,8 +26,8 @@ Plug 'xywei/vim-dealii-prm'
 " neovim-colors-solarized
 "--------------------------------------
 " using a fork that can use true color
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
-syntax enable
+"Plug 'frankier/neovim-colors-solarized-truecolor-only'
+"syntax enable
 " For older neovim versions (<0.1.5), we need to
 " export NVIM_TUI_ENABLE_TRUE_COLOR=1
 if exists("&termguicolors")
@@ -35,8 +35,25 @@ if exists("&termguicolors")
 else
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
-let g:solarized_menu=0
-set background=dark " or dark
+"let g:solarized_menu=0
+"set background=dark " or dark
+" Custom settings
+"let g:solarized_contrast = “high”
+"" two commands to switch between dark/light themes
+"command Dark :set background=dark
+"command Light :set background=light
+
+"--------------------------------------
+" vim-solarized8
+"--------------------------------------
+" another truecolor theme more actively maintained
+Plug 'lifepillar/vim-solarized8'
+let g:solarized_visibility = "high"
+let g:solarized_diffmode = "high"
+
+"" two commands to switch between dark/light themes
+command Light :colorscheme solarized8_light_flat
+command Dark :colorscheme solarized8_dark_flat
 
 "--------------------------------------
 " Neomake
@@ -441,7 +458,7 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 call plug#end()
 
 " Colorscheme must be set after plug#end()
-colorscheme solarized
+colorscheme solarized8_dark_flat
 
 """""""""""""""""""""""""""""""""""""""
 " Other configurations
