@@ -277,13 +277,14 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 " Using yapf to format python code
 "--------------------------------------
 " requires sudo pip3 install yapf
-autocmd FileType python nnoremap <leader>= :0,$!yapf<Cr>
+autocmd FileType py let b:noNeoformat=1
+autocmd FileType py nnoremap <buffer><leader>= :0,$!yapf<Cr>
 
 "--------------------------------------
 " jedi-vim for Python auto completion
 "--------------------------------------
 " requires sudo pip3 install jedi
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 
 "--------------------------------------
 " vimtex
