@@ -11,6 +11,7 @@ DOT_FILES=(\
   ".ctags"\
   ".gitconfig"\
   ".gitignore_global"\
+  ".gdbinit"\
   ".latexmkrc"\
   ".jrnl_config"\
   ".gdbinit"\
@@ -29,6 +30,16 @@ while true; do
   read -p "Do you wish to update .gitignore_global?" yn
   case $yn in
     [Yy]* ) sh generate_gitignore.sh; break;;
+    [Nn]* ) echo "Skipping.."; break;;
+    * ) echo "Please answer [y]es or [n]o.";;
+  esac
+done
+
+# Option to update .gdbinit
+while true; do
+  read -p "Do you wish to update .gdbinit?" yn
+  case $yn in
+    [Yy]* ) sh generate_gdbinit.sh; break;;
     [Nn]* ) echo "Skipping.."; break;;
     * ) echo "Please answer [y]es or [n]o.";;
   esac
