@@ -8,6 +8,7 @@ DOT_FILES=(\
   ".bashrc"\
   ".tmux.conf"\
   ".tmux-osx.conf"\
+  ".tmux"\
   ".ctags"\
   ".gitconfig"\
   ".gitignore_global"\
