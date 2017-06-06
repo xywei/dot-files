@@ -76,6 +76,11 @@ Plug 'neomake/neomake'
 Plug 'nathanaelkane/vim-indent-guides'
 
 "--------------------------------------
+" Display ansi escape sequences in a readable way
+"--------------------------------------
+Plug 'IngoHeimbach/vim-plugin-AnsiEsc'
+
+"--------------------------------------
 " Clang based syntax highlighting
 "--------------------------------------
 " chromatica.nvim
@@ -459,7 +464,14 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 call plug#end()
 
 " Colorscheme must be set after plug#end()
-colorscheme solarized8_dark_flat
+" colorscheme solarized8_dark_flat
+
+" Time-based colorscheme
+if strftime("%H") < 6 || strftime("%H") > 18
+  colorscheme solarized8_dark_flat
+else
+  colorscheme solarized8_light_flat
+endif
 
 """""""""""""""""""""""""""""""""""""""
 " Other configurations
