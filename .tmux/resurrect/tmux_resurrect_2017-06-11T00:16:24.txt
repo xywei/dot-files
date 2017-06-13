@@ -1,0 +1,5 @@
+pane	cpp-dev	1	:[tmux]	1	:*	1	:/Users/xywei	1	bash	:
+pane	playground	1	:[tmux]	1	:*	1	:/Users/xywei/Downloads	1	bash	:
+window	cpp-dev	1	1	:*	b880,180x43,0,0,3
+window	playground	1	1	:*	b87d,180x43,0,0,0
+state	cpp-dev	
