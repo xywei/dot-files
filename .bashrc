@@ -121,10 +121,23 @@ if hash xmodmap 2>/dev/null; then
 fi
 
 # Spack is under $HOME
+#echo Loading spack..
 export SPACK_ROOT=$HOME/spack
 . $SPACK_ROOT/share/spack/setup-env.sh
+#echo Loading spack.. Done.
+
+#echo Loading environment modules..
 MODULES_HOME=`spack location -i environment-modules`
 source ${MODULES_HOME}/Modules/init/bash
+#echo Loading environment modules.. Done.
+
+# echo Loading mpi..
+# spack load mpi
+# echo Loading mpi.. Done.
+
+# echo Loading dealii..
+# spack load dealii
+# echo Loading dealii.. Done.
 
 # Alias definitions.
 # You may want to put all your local additions into a separate file like
@@ -135,3 +148,5 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Conda
+export PATH=$PATH:/home/xywei/miniconda3/bin/
