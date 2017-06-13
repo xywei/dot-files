@@ -29,14 +29,33 @@
 (setq my:el-get-packages
       '(org-mode
 	org-bullets
-        evil
 	yasnippet
-	color-theme-solarized
 	dash
+        s
 	ob-ipython
 	org-reveal
+        pdf-tools
+        org-pdfview
 	yaml-mode
+        dracula-theme
+        mode-icons
+        restart-emacs
+	undo-tree
         ))
 
 (el-get 'sync my:el-get-packages)
 
+;; If you install themes via elpa / package.el you'll need to add each theme folder 
+;; into your custom-theme-load-path manually.
+;; This is a scrip to do this automatically.
+(require 'dash)
+(require 's)
+(-each
+   (-map
+      (lambda (item)
+      (format "~/.emacs.d/elpa/%s" item))
+   (-filter
+      (lambda (item) (s-contains? "theme" item))
+      (directory-files "~/.emacs.d/elpa/")))
+   (lambda (item)
+      (add-to-list 'custom-theme-load-path item)))

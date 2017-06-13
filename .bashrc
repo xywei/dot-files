@@ -4,9 +4,32 @@ case $- in
       *) return;;
 esac
 
+# Detect platform
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'FreeBSD' ]]; then
+   platform='freebsd'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='darwin'
+ fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
+
+# There is a bug in MacOS at the moment.
+# See https://serverfault.com/questions/422908/how-can-i-prevent-the-warning-no-xauth-data-using-fake-authentication-data-for
+#if [ "$platform" == 'darwin' ]; then
+#  dispdir=`dirname $DISPLAY`
+#  dispfile=`basename $DISPLAY`
+#  dispnew="$dispdir/:0"
+#  if [ -e $DISPLAY -a "$dispfile" = "org.x:0" ]; then
+#    mv $DISPLAY $dispnew
+#  fi
+#  export DISPLAY=$dispnew
+#fi
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -31,6 +54,19 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
     screen-256color) color_prompt=yes;;
 esac
+
+# For MacOS, add bash completions under Homebrew
+if [[ $platform == 'darwin' ]]; then
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+fi
+
+# XMind issue on Linux
+# https://xmind.desk.com/customer/portal/questions/15880703-xmind7-very-slow-compared-to-version-6
+if [[ $platform == 'linux' ]]; then
+  export SWT_GTK3=0
+fi
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
@@ -82,10 +118,12 @@ fi
 [ -e "/etc/DIR_COLORS" ] && DIR_COLORS="/etc/DIR_COLORS"
 [ -e "$HOME/.dircolors" ] && DIR_COLORS="$HOME/.dircolors"
 [ -e "$DIR_COLORS" ] || DIR_COLORS=""
-eval "`dircolors -b $DIR_COLORS`"
+if [ -x /usr/bin/dircolors ]; then
+  eval "`dircolors -b $DIR_COLORS`"
+fi
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -95,6 +133,12 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Always print out compile commands
 alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+
+# Enable custom password-store extensions
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+
+# For GPG >= 2.1.0
+export GPG_TTY=$(tty)
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -114,6 +158,11 @@ alias desk="startx --extension glx"
 
 # Just use neovim
 alias vim="nvim"
+alias vs="nvim -S"
+alias vi="nvim"
+
+# Run emacs with --no-window-system
+alias emacs="emacs -nw"
 
 # Disable middle click paste
 if hash xmodmap 2>/dev/null; then
@@ -149,4 +198,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Conda
-export PATH=$PATH:/home/xywei/miniconda3/bin/
+export PATH=$PATH:$HOME/miniconda3/bin/
+
+# Add cli-utils to PATH
+export PATH=$HOME/cli-utils:$PATH

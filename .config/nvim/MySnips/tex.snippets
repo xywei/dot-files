@@ -6,6 +6,14 @@ snippet m "Inline math"
 $ $1 $ $0
 endsnippet
 
+snippet tt "Text within math env"
+\text{ $1 } $0
+endsnippet
+
+snippet tld "Tilde"
+\tilde{ $1 } $0
+endsnippet
+
 snippet max "Max"
 \max_{ $1 } $0
 endsnippet
@@ -368,5 +376,17 @@ endsnippet
 
 snippet arc "Arc in tikz" b
 \draw ( ${1:0}, ${2:0} ) arc ( ${3:0} : ${4:90} : ${5:3cm} );
+$0
+endsnippet
+
+
+##################################################
+# Beamer
+##################################################
+snippet frame "Frame" b
+\begin{frame}
+  \frametitle{$1}
+  $2
+\end{frame}
 $0
 endsnippet

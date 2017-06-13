@@ -4,6 +4,20 @@
 call plug#begin('~/.vim/plugged')
 
 "--------------------------------------
+" ale
+"--------------------------------------
+" Asynchronous Lint Engine
+" (Choose only one of ale and Neomake)
+" Plug 'w0rp/ale'
+
+"--------------------------------------
+" vim-obsession
+"--------------------------------------
+" A more powerful :mksession
+Plug 'tpope/vim-obsession'
+set statusline+='%{ObsessionStatus()}'
+
+"--------------------------------------
 " vim-dealii-prm
 "--------------------------------------
 Plug 'xywei/vim-dealii-prm'
@@ -12,8 +26,8 @@ Plug 'xywei/vim-dealii-prm'
 " neovim-colors-solarized
 "--------------------------------------
 " using a fork that can use true color
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
-syntax enable
+"Plug 'frankier/neovim-colors-solarized-truecolor-only'
+"syntax enable
 " For older neovim versions (<0.1.5), we need to
 " export NVIM_TUI_ENABLE_TRUE_COLOR=1
 if exists("&termguicolors")
@@ -21,8 +35,25 @@ if exists("&termguicolors")
 else
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
-let g:solarized_menu=0
-set background=dark " or dark
+"let g:solarized_menu=0
+"set background=dark " or dark
+" Custom settings
+"let g:solarized_contrast = “high”
+"" two commands to switch between dark/light themes
+"command Dark :set background=dark
+"command Light :set background=light
+
+"--------------------------------------
+" vim-solarized8
+"--------------------------------------
+" another truecolor theme more actively maintained
+Plug 'lifepillar/vim-solarized8'
+let g:solarized_visibility = "high"
+let g:solarized_diffmode = "high"
+
+"" two commands to switch between dark/light themes
+command Light :colorscheme solarized8_light_flat
+command Dark :colorscheme solarized8_dark_flat
 
 "--------------------------------------
 " Neomake
@@ -33,9 +64,9 @@ Plug 'neomake/neomake'
 " below for details (command MakeTags)
 "
 " let g:neomake_ctags_maker = {
-    " \ 'exe': 'ctags',
-    " \ 'args': ['-R .'],
-    " \ }
+" \ 'exe': 'ctags',
+" \ 'args': ['-R .'],
+" \ }
 " autocmd BufWritePre,BufRead *.cpp :Neomake! ctags
 
 "--------------------------------------
@@ -43,6 +74,11 @@ Plug 'neomake/neomake'
 "--------------------------------------
 " visually display indent levels
 Plug 'nathanaelkane/vim-indent-guides'
+
+"--------------------------------------
+" Display ansi escape sequences in a readable way
+"--------------------------------------
+Plug 'IngoHeimbach/vim-plugin-AnsiEsc'
 
 "--------------------------------------
 " Clang based syntax highlighting
@@ -79,16 +115,16 @@ let g:tagbar_width = 50
 nmap tb :TagbarToggle<cr>
 
 let g:tagbar_type_tex = {
-            \ 'ctagstype' : 'latex',
-            \ 'kinds'     : [
-            \ 's:sections',
-            \ 'g:graphics:1',
-            \ 'l:labels:1',
-            \ 'r:refs:1',
-            \ 'p:pagerefs:1'
-            \ ],
-            \ 'sort'    : 0
-            \ }
+      \ 'ctagstype' : 'latex',
+      \ 'kinds'     : [
+      \ 's:sections',
+      \ 'g:graphics:1',
+      \ 'l:labels:1',
+      \ 'r:refs:1',
+      \ 'p:pagerefs:1'
+      \ ],
+      \ 'sort'    : 0
+      \ }
 
 "--------------------------------------
 " CtrlP
@@ -104,10 +140,10 @@ let g:tagbar_type_tex = {
 " set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 " let g:ctrlp_custom_ignore = {
-  " \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  " \ 'file': '\v\.(exe|so|dll)$',
-  " \ 'link': 'some_bad_symbolic_links',
-  " \ }
+" \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+" \ 'file': '\v\.(exe|so|dll)$',
+" \ 'link': 'some_bad_symbolic_links',
+" \ }
 
 "--------------------------------------
 " vim-easy-align
@@ -208,6 +244,9 @@ Plug 'vim-airline/vim-airline-themes'
 " to show glyphs
 let g:airline_powerline_fonts = 1
 
+" to display all buffers when there's only one tab open<Paste>
+let g:airline#extensions#tabline#enabled = 1
+
 "--------------------------------------
 " vim-operator-user
 "--------------------------------------
@@ -221,6 +260,8 @@ Plug 'kana/vim-operator-user'
 Plug 'rhysd/vim-clang-format'
 " Customize format in .clang-format or _clang_format
 let g:clang_format#detect_style_file = 1
+" define a flag to work with Neoformat
+autocmd FileType c,cpp,objc let b:noNeoformat=1
 " map to <Leader>cf in C++ code
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>= :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>= :ClangFormat<CR>
@@ -241,13 +282,14 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 " Using yapf to format python code
 "--------------------------------------
 " requires sudo pip3 install yapf
-autocmd FileType python nnoremap <leader>= :0,$!yapf<Cr>
+autocmd FileType py let b:noNeoformat=1
+autocmd FileType py nnoremap <buffer><leader>= :0,$!yapf<Cr>
 
 "--------------------------------------
 " jedi-vim for Python auto completion
 "--------------------------------------
 " requires sudo pip3 install jedi
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 
 "--------------------------------------
 " vimtex
@@ -274,7 +316,7 @@ let g:deoplete#disable_auto_complete = 1
 " Initialize input_patterns
 let g:deoplete#omni#input_patterns = {}
 " Alternatively, use Ctrl+l to manually complete
-inoremap <silent><expr><C-F1> deoplete#mappings#manual_complete()
+inoremap <silent><expr><C-l> deoplete#mappings#manual_complete()
 
 autocmd CompleteDone * pclose " To close preview window of deoplete automagically
 
@@ -327,9 +369,6 @@ let g:UltiSnipsEditSplit="vertical"
 Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> <C-l> :TmuxNavigateLeft<cr>
-
-
 "--------------------------------------
 " vim-orgmode
 "--------------------------------------
@@ -337,9 +376,21 @@ Plug 'jceb/vim-orgmode'
 " Plug 'tpope/vim-speeddating'
 
 "--------------------------------------
+" undotree
+"--------------------------------------
+Plug 'mbbill/undotree'
+nnoremap <leader>u :UndotreeToggle<cr>
+
+" enable persistent undo as recommended
+if has("persistent_undo")
+  set undodir=~/.undodir/
+  set undofile
+endif
+
+"--------------------------------------
 " vimwiki
 "--------------------------------------
-" does similar job as vim-orgmode 
+" does similar job as vim-orgmode
 Plug 'vimwiki/vimwiki'
 
 " Put wiki files in Dropbox
@@ -348,6 +399,26 @@ let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/'}]
 " Use <leader>o to toggle check lists
 nmap <leader>tt <Plug>VimwikiToggleListItem
 vmap <leader>tt <Plug>VimwikiToggleListItem
+
+"--------------------------------------
+" Neoformat
+"--------------------------------------
+Plug 'sbdchd/neoformat'
+
+" If using other formatting plugin, define noNeoformat for
+" that file type.
+if !exists('b:noNeoformat')
+  nnoremap <buffer><Leader>= :<C-u>Neoformat<CR>
+  vnoremap <buffer><Leader>= :Neoformat<CR>
+endif
+
+" Enable basic formatting when a filetype is not found. Disabled by default.
+" Enable alignment
+let g:neoformat_basic_format_align = 1
+" Enable tab to spaces conversion
+let g:neoformat_basic_format_retab = 1
+" Enable trimmming of trailing whitespace
+let g:neoformat_basic_format_trim = 1
 
 "--------------------------------------
 " vim-devicons
@@ -393,7 +464,14 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 call plug#end()
 
 " Colorscheme must be set after plug#end()
-colorscheme solarized
+" colorscheme solarized8_dark_flat
+
+" Time-based colorscheme
+if strftime("%H") < 6 || strftime("%H") > 18
+  colorscheme solarized8_dark_flat
+else
+  colorscheme solarized8_light_flat
+endif
 
 """""""""""""""""""""""""""""""""""""""
 " Other configurations
@@ -409,6 +487,11 @@ set path+=**
 
 " Display all matchings when we do tab complete
 set wildmenu
+
+" Use markers to fold
+" also enable space to trigger the fold in normal mode
+set foldmethod=marker
+nnoremap <space> za
 
 " Using :find + * to do fuzzy file open,
 " and :b + sub_string to do buffer switch,
@@ -585,4 +668,3 @@ command -bar -nargs=0 -range=% Indent call Indent()
 "    (often too verbose)
 "
 " 3. Deoplete plugin Ctrl+l (clang based)
-
