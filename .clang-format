@@ -8,8 +8,13 @@ AllowAllParametersOfDeclarationOnNextLine: true
 
 ColumnLimit: 80
 
+FixNamespaceComments: true
+
 KeepEmptyLinesAtTheStartOfBlocks: true
 MaxEmptyLinesToKeep: 2
+
+ReflowComments: true
+SortIncludes: true
 
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeParens: ControlStatements
