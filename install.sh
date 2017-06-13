@@ -8,7 +8,7 @@ DOT_FILES=(\
   ".bashrc"\
   ".tmux.conf"\
   ".tmux-osx.conf"\
-  ".tmux"\
+  ".tmux/plugins/tpm"\
   ".ctags"\
   ".gitconfig"\
   ".gitignore_global"\
@@ -115,6 +115,7 @@ fi
 
 mkdir -p $HOME/.config
 mkdir -p $HOME/.emacs.d
+mkdir -p $HOME/.tmux/plugins
 
 for i in "${DOT_FILES[@]}"
 do
