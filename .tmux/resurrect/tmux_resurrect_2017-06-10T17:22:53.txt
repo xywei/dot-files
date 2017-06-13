@@ -1,3 +1,0 @@
-pane	playground	1	:bash	1	:*	1	:/Users/xywei/Downloads	1	bash	:
-window	playground	1	1	:*	bc3d,178x43,0,0,0
-state	playground	

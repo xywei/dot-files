@@ -38,3 +38,6 @@
 
 # Vim spell file (binary)
 *.spl
+
+# Tmux saved sessions
+.tmux/resurrect/*

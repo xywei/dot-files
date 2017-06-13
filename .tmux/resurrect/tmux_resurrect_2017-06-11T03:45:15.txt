@@ -1,9 +1,0 @@
-pane	cpp-dev	1	:nvim	1	:*	1	:/Users/xywei/Dropbox (Personal)/Projects/mono	1	nvim	:nvim Mono/src/string-method/string.h
-pane	cpp-dev	2	:bash	0	:-	1	:/Users/xywei/Workspace/mono-build	1	bash	:
-pane	playground	1	:[tmux]	1	:*	1	:/Users/xywei/Downloads	1	bash	:
-pane	python-dev	1	:bash	1	:*	1	:/Users/xywei	1	bash	:
-window	cpp-dev	1	1	:*	c100,181x45,0,0,3
-window	cpp-dev	2	0	:-	c102,181x45,0,0,5
-window	playground	1	1	:*	b87d,180x43,0,0,0
-window	python-dev	1	1	:*	b881,180x43,0,0,4
-state	cpp-dev	python-dev
