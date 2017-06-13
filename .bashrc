@@ -62,6 +62,12 @@ if [[ $platform == 'darwin' ]]; then
   fi
 fi
 
+# XMind issue on Linux
+# https://xmind.desk.com/customer/portal/questions/15880703-xmind7-very-slow-compared-to-version-6
+if [[ $platform == 'linux' ]]; then
+  export SWT_GTK3=0
+fi
+
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
