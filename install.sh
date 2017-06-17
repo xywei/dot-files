@@ -8,9 +8,11 @@ DOT_FILES=(\
   ".bashrc"\
   ".tmux.conf"\
   ".tmux-osx.conf"\
+  ".tmux/plugins/tpm"\
   ".ctags"\
   ".gitconfig"\
   ".gitignore_global"\
+  ".gdbinit"\
   ".latexmkrc"\
   ".jrnl_config"\
   ".gdbinit"\
@@ -29,6 +31,16 @@ while true; do
   read -p "Do you wish to update .gitignore_global?" yn
   case $yn in
     [Yy]* ) sh generate_gitignore.sh; break;;
+    [Nn]* ) echo "Skipping.."; break;;
+    * ) echo "Please answer [y]es or [n]o.";;
+  esac
+done
+
+# Option to update .gdbinit
+while true; do
+  read -p "Do you wish to update .gdbinit?" yn
+  case $yn in
+    [Yy]* ) sh generate_gdbinit.sh; break;;
     [Nn]* ) echo "Skipping.."; break;;
     * ) echo "Please answer [y]es or [n]o.";;
   esac
@@ -103,6 +115,7 @@ fi
 
 mkdir -p $HOME/.config
 mkdir -p $HOME/.emacs.d
+mkdir -p $HOME/.tmux/plugins
 
 for i in "${DOT_FILES[@]}"
 do

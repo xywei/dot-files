@@ -7,7 +7,15 @@ call plug#begin('~/.vim/plugged')
 " ale
 "--------------------------------------
 " Asynchronous Lint Engine
+" (Choose only one of ale and Neomake)
 " Plug 'w0rp/ale'
+
+"--------------------------------------
+" vim-obsession
+"--------------------------------------
+" A more powerful :mksession
+Plug 'tpope/vim-obsession'
+set statusline+='%{ObsessionStatus()}'
 
 "--------------------------------------
 " vim-dealii-prm
@@ -18,8 +26,8 @@ Plug 'xywei/vim-dealii-prm'
 " neovim-colors-solarized
 "--------------------------------------
 " using a fork that can use true color
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
-syntax enable
+"Plug 'frankier/neovim-colors-solarized-truecolor-only'
+"syntax enable
 " For older neovim versions (<0.1.5), we need to
 " export NVIM_TUI_ENABLE_TRUE_COLOR=1
 if exists("&termguicolors")
@@ -27,8 +35,25 @@ if exists("&termguicolors")
 else
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
-let g:solarized_menu=0
-set background=dark " or dark
+"let g:solarized_menu=0
+"set background=dark " or dark
+" Custom settings
+"let g:solarized_contrast = “high”
+"" two commands to switch between dark/light themes
+"command Dark :set background=dark
+"command Light :set background=light
+
+"--------------------------------------
+" vim-solarized8
+"--------------------------------------
+" another truecolor theme more actively maintained
+Plug 'lifepillar/vim-solarized8'
+let g:solarized_visibility = "high"
+let g:solarized_diffmode = "high"
+
+"" two commands to switch between dark/light themes
+command Light :colorscheme solarized8_light_flat
+command Dark :colorscheme solarized8_dark_flat
 
 "--------------------------------------
 " Neomake
@@ -49,6 +74,11 @@ Plug 'neomake/neomake'
 "--------------------------------------
 " visually display indent levels
 Plug 'nathanaelkane/vim-indent-guides'
+
+"--------------------------------------
+" Display ansi escape sequences in a readable way
+"--------------------------------------
+Plug 'IngoHeimbach/vim-plugin-AnsiEsc'
 
 "--------------------------------------
 " Clang based syntax highlighting
@@ -214,6 +244,9 @@ Plug 'vim-airline/vim-airline-themes'
 " to show glyphs
 let g:airline_powerline_fonts = 1
 
+" to display all buffers when there's only one tab open<Paste>
+let g:airline#extensions#tabline#enabled = 1
+
 "--------------------------------------
 " vim-operator-user
 "--------------------------------------
@@ -249,13 +282,14 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 " Using yapf to format python code
 "--------------------------------------
 " requires sudo pip3 install yapf
-autocmd FileType python nnoremap <leader>= :0,$!yapf<Cr>
+autocmd FileType py let b:noNeoformat=1
+autocmd FileType py nnoremap <buffer><leader>= :0,$!yapf<Cr>
 
 "--------------------------------------
 " jedi-vim for Python auto completion
 "--------------------------------------
 " requires sudo pip3 install jedi
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 
 "--------------------------------------
 " vimtex
@@ -430,7 +464,14 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 call plug#end()
 
 " Colorscheme must be set after plug#end()
-colorscheme solarized
+" colorscheme solarized8_dark_flat
+
+" Time-based colorscheme
+if strftime("%H") < 6 || strftime("%H") > 18
+  colorscheme solarized8_dark_flat
+else
+  colorscheme solarized8_light_flat
+endif
 
 """""""""""""""""""""""""""""""""""""""
 " Other configurations
@@ -446,6 +487,11 @@ set path+=**
 
 " Display all matchings when we do tab complete
 set wildmenu
+
+" Use markers to fold
+" also enable space to trigger the fold in normal mode
+set foldmethod=marker
+nnoremap <space> za
 
 " Using :find + * to do fuzzy file open,
 " and :b + sub_string to do buffer switch,

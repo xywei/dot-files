@@ -62,6 +62,12 @@ if [[ $platform == 'darwin' ]]; then
   fi
 fi
 
+# XMind issue on Linux
+# https://xmind.desk.com/customer/portal/questions/15880703-xmind7-very-slow-compared-to-version-6
+if [[ $platform == 'linux' ]]; then
+  export SWT_GTK3=0
+fi
+
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -117,7 +123,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -152,6 +158,7 @@ alias desk="startx --extension glx"
 
 # Just use neovim
 alias vim="nvim"
+alias vs="nvim -S"
 alias vi="nvim"
 
 # Run emacs with --no-window-system
@@ -163,10 +170,23 @@ if hash xmodmap 2>/dev/null; then
 fi
 
 # Spack is under $HOME
+#echo Loading spack..
 export SPACK_ROOT=$HOME/spack
 . $SPACK_ROOT/share/spack/setup-env.sh
+#echo Loading spack.. Done.
+
+#echo Loading environment modules..
 MODULES_HOME=`spack location -i environment-modules`
 source ${MODULES_HOME}/Modules/init/bash
+#echo Loading environment modules.. Done.
+
+# echo Loading mpi..
+# spack load mpi
+# echo Loading mpi.. Done.
+
+# echo Loading dealii..
+# spack load dealii
+# echo Loading dealii.. Done.
 
 # Alias definitions.
 # You may want to put all your local additions into a separate file like
@@ -176,6 +196,9 @@ source ${MODULES_HOME}/Modules/init/bash
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+# Conda
+export PATH=$PATH:$HOME/miniconda3/bin/
 
 # Add cli-utils to PATH
 export PATH=$HOME/cli-utils:$PATH
