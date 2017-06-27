@@ -257,18 +257,18 @@ Plug 'kana/vim-operator-user'
 " vim-clang-format
 "--------------------------------------
 " c++ formatter using clang-format
-Plug 'rhysd/vim-clang-format'
+" Plug 'rhysd/vim-clang-format'
 " Customize format in .clang-format or _clang_format
-let g:clang_format#detect_style_file = 1
+" let g:clang_format#detect_style_file = 1
 " define a flag to work with Neoformat
-autocmd FileType c,cpp,objc let b:noNeoformat=1
+" autocmd FileType c,cpp,objc let b:noNeoformat=1
 " map to <Leader>cf in C++ code
-autocmd FileType c,cpp,objc nnoremap <buffer><Leader>= :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><Leader>= :ClangFormat<CR>
+" autocmd FileType c,cpp,objc nnoremap <buffer><Leader>= :<C-u>ClangFormat<CR>
+" autocmd FileType c,cpp,objc vnoremap <buffer><Leader>= :ClangFormat<CR>
 " if you install vim-operator-user
-autocmd FileType c,cpp,objc map <buffer><Leader>c <Plug>(operator-clang-format)
+" autocmd FileType c,cpp,objc map <buffer><Leader>c <Plug>(operator-clang-format)
 " Toggle auto formatting:
-nmap <Leader>C :ClangFormatAutoToggle<CR>
+" nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 "--------------------------------------
 " vim-clang
