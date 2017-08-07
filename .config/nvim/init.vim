@@ -485,6 +485,12 @@ if s:uname == "Darwin\n"
   let g:python3_host_prog='/usr/local/bin/python3'
 endif
 
+" Set python interpreter on Linux (ignore virtualenv and conda)
+if s:uname == "Linux\n"
+  let g:python_host_prog='/usr/bin/python2'
+  let g:python3_host_prog='/usr/bin/python3'
+endif
+
 " Exploit vim's fuzzy search
 " search down into all subfolders
 " e.g., :find *.cpp + tab will give you all cpp files within
