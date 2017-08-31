@@ -2,5 +2,5 @@
 if [[ "$(uname)" =~ Darwin ]]; then
   cat - | reattach-to-user-namespace pbcopy
 else
-  cat - | xclip
+  cat - | /usr/bin/xclip
 fi
