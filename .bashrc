@@ -62,6 +62,16 @@ if [[ $platform == 'darwin' ]]; then
   fi
 fi
 
+# For MacOS this is the root folder where all globally
+# installed node packages will  go
+# https://gist.github.com/rcugut/c7abd2a425bb65da3c61d8341cd4b02d
+if [[ $platform == 'darwin' ]]; then
+  export NPM_PACKAGES="/usr/local/npm_packages"
+  export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+  # add to PATH
+  export PATH="$NPM_PACKAGES/bin:$PATH"
+fi
+
 # XMind issue on Linux
 # https://xmind.desk.com/customer/portal/questions/15880703-xmind7-very-slow-compared-to-version-6
 if [[ $platform == 'linux' ]]; then
@@ -198,7 +208,11 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Conda
-export PATH=$PATH:$HOME/miniconda3/bin/
+# export PATH=$PATH:$HOME/miniconda3/bin/
 
 # Add cli-utils to PATH
 export PATH=$HOME/cli-utils:$PATH
+
+# https://github.com/conda/conda/issues/4552
+# added by Anaconda3 4.4.0 installer
+# export PATH="/home/xywei/anaconda3/bin:$PATH"
