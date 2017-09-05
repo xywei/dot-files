@@ -6,6 +6,12 @@ The .tmux.conf is a configuration file for tmux. To use, make a symlink of this 
 
 See [this video](https://youtu.be/JXwS7z6Dqic) for more information about tmux.
 
+## spacemacs
+
+In `.spacemacs` file, load `spacemacs/user-init.el` in 
+`dotspacemacs/user-init ()` and load `spacemacs/user-config.el`
+in `dotspacemacs/user-config ()`.
+
 ## neovim
 The .nvimrc is a configuration file for neovim. To use it, first install 
 [vim-plug](https://github.com/junegunn/vim-plug) 

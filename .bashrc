@@ -208,7 +208,11 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Conda
-export PATH=$PATH:$HOME/miniconda3/bin/
+# export PATH=$PATH:$HOME/miniconda3/bin/
 
 # Add cli-utils to PATH
 export PATH=$HOME/cli-utils:$PATH
+
+# https://github.com/conda/conda/issues/4552
+# added by Anaconda3 4.4.0 installer
+# export PATH="/home/xywei/anaconda3/bin:$PATH"

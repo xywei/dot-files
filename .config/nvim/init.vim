@@ -18,6 +18,12 @@ Plug 'tpope/vim-obsession'
 set statusline+='%{ObsessionStatus()}'
 
 "--------------------------------------
+" vim-voom
+"--------------------------------------
+" Vim two-pane outliner
+Plug 'vim-voom/VOoM'
+
+"--------------------------------------
 " vim-dealii-prm
 "--------------------------------------
 Plug 'xywei/vim-dealii-prm'
@@ -305,50 +311,50 @@ Plug 'lervag/vimtex'
 " If :echo has("python3") returns 1, then you're done.
 " Otherwise, you may enable it by running: pip3 install neovim
 " To invoke omni function: Ctrl+x Ctrl+o
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" function! DoRemote(arg)
+  " UpdateRemotePlugins
+" endfunction
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Enable at startup
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 " Disable auto-complete
-let g:deoplete#disable_auto_complete = 1
+" let g:deoplete#disable_auto_complete = 1
 " Initialize input_patterns
-let g:deoplete#omni#input_patterns = {}
+" let g:deoplete#omni#input_patterns = {}
 " Alternatively, use Ctrl+l to manually complete
-inoremap <silent><expr><C-l> deoplete#mappings#manual_complete()
+" inoremap <silent><expr><C-l> deoplete#mappings#manual_complete()
 
-autocmd CompleteDone * pclose " To close preview window of deoplete automagically
+" autocmd CompleteDone * pclose " To close preview window of deoplete automagically
 
 "--------------------------------------
 " deoplete-clang
 "--------------------------------------
 " Plug 'zchee/deoplete-clang'
-if has('unix')
-  let s:uname = system("uname")
-  " Assume that llvm is installed via homebrew on MacOS
-  " brew install llvm --with-clang
-  if s:uname == "Darwin\n"
-    let g:deoplete#sources#clang#libclang_path = '/usr/local/opt/llvm/lib/libclang.dylib'
-    let g:deoplete#sources#clang#clang_header = '/usr/local/opt/llvm/lib/clang'
-  endif
-  " Assme that this a an Arch linux, using clang from pacman
-  if s:uname == "Linux\n"
-    let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-    let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
-  endif
-endif
-if filereadable("./compile_commands.json")
-  let g:deoplete#sources#clang#clang_complete_database='./'
-elseif filereadable("./build/compile_commands.json")
-  let g:deoplete#sources#clang#clang_complete_database='./build/'
-endif
+" if has('unix')
+  " let s:uname = system("uname")
+  " " Assume that llvm is installed via homebrew on MacOS
+  " " brew install llvm --with-clang
+  " if s:uname == "Darwin\n"
+    " let g:deoplete#sources#clang#libclang_path = '/usr/local/opt/llvm/lib/libclang.dylib'
+    " let g:deoplete#sources#clang#clang_header = '/usr/local/opt/llvm/lib/clang'
+  " endif
+  " " Assme that this a an Arch linux, using clang from pacman
+  " if s:uname == "Linux\n"
+    " let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+    " let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+  " endif
+" endif
+" if filereadable("./compile_commands.json")
+  " let g:deoplete#sources#clang#clang_complete_database='./'
+" elseif filereadable("./build/compile_commands.json")
+  " let g:deoplete#sources#clang#clang_complete_database='./build/'
+" endif
 
 "--------------------------------------
 " neoinclude
 "--------------------------------------
 " Include completion framework for neocomplete/deoplete
-Plug 'Shougo/neoinclude.vim'
+" Plug 'Shougo/neoinclude.vim'
 
 "--------------------------------------
 " ulti-snipts
@@ -373,7 +379,7 @@ let g:tmux_navigator_no_mappings = 1
 " vim-orgmode
 "--------------------------------------
 Plug 'jceb/vim-orgmode'
-" Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-speeddating'
 
 "--------------------------------------
 " undotree
@@ -483,6 +489,12 @@ set mouse=a
 if s:uname == "Darwin\n"
   let g:python_host_prog='/usr/local/bin/python2'
   let g:python3_host_prog='/usr/local/bin/python3'
+endif
+
+" Set python interpreter on Linux (ignore virtualenv and conda)
+if s:uname == "Linux\n"
+  let g:python_host_prog='/usr/bin/python2'
+  let g:python3_host_prog='/usr/bin/python3'
 endif
 
 " Exploit vim's fuzzy search
