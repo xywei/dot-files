@@ -8,6 +8,13 @@ git submodule foreach git pull origin master
 # Build gitignore_global, replacing the old one
 cat gitignore/Global/* > .gitignore_global
 
+# Don't ignore lib/
+awk -i inplace '!/^lib\//' .gitignore_global
+
+# Don't ignore jpg and html
+awk -i inplace '!/^*.jpg/' .gitignore_global
+awk -i inplace '!/^*.html/' .gitignore_global
+
 # Add more that suites my needs
 echo .gdb_history >> .gitignore_global
 
