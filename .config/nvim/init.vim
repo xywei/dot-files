@@ -18,6 +18,12 @@ Plug 'tpope/vim-obsession'
 set statusline+='%{ObsessionStatus()}'
 
 "--------------------------------------
+" vim-voom
+"--------------------------------------
+" Vim two-pane outliner
+Plug 'vim-voom/VOoM'
+
+"--------------------------------------
 " vim-dealii-prm
 "--------------------------------------
 Plug 'xywei/vim-dealii-prm'
@@ -373,7 +379,7 @@ let g:tmux_navigator_no_mappings = 1
 " vim-orgmode
 "--------------------------------------
 Plug 'jceb/vim-orgmode'
-" Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-speeddating'
 
 "--------------------------------------
 " undotree
