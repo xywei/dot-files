@@ -2,6 +2,7 @@
 ;; Replace selection (more natural)
 (delete-selection-mode t)
 
+
 ;;
 ;; Make frame be able to resize to full height
 (setq frame-resize-pixelwise t)
@@ -32,18 +33,30 @@
 ;; (add-hook 'text-mode-hook 'turn-on-fci-mode)
 (setq-default fill-column 80)
 (setq fci-rule-width 3)
-(setq fci-rule-color "darkblue")
-
+(setq fci-rule-color "dark orange")
 
 (defun halve-other-window-width ()
   "Expand current window to use half of the other window's width."
   (interactive)
   (enlarge-window-horizontally (/ (window-width (next-window)) 2)))
 
+(setq yas-snippet-dirs
+      '("~/dot-files/spacemacs/snippets"      ;; personal snippets
+        ))
+(yas-global-mode 1) ;; or M-x yas-reload-all if you've started YASnippet already.
+
 ;;
 ;; Org-mode configs
 ;;
 (with-eval-after-load 'org
+                      ;; Use 16pt font
+                      (set-face-attribute 'default nil :height 160)
+                      ;;
+                      ;; bigger latex fragment, default is roughly 100 font size
+                      (plist-put org-format-latex-options :scale 1.6)
+                      ;;
+                      ;; Auto new-line
+                      (add-hook 'org-mode-hook 'turn-on-auto-fill)
                       ;;
                       ;; Shift-Enter to open local centent and move cursor 
                       ;; Assuming only two windows at present
@@ -55,7 +68,9 @@
                              (halve-other-window-width)
                              (rename-buffer (org-get-heading) t))
                       (define-key org-mode-map
-                      [S-return] 'org-tree-open-in-new-window)
+                      [C-S-return] 'org-tree-open-in-new-window)
+                      ;;(define-key org-mode-map
+                      ;;(kbd "<mouse-3>") 'org-tree-open-in-new-window)
                       ;;
                       ;; Enter to open local centent and but cursor stays
                       ;; Assuming only two windows at present
@@ -68,6 +83,5 @@
                              (rename-buffer (org-get-heading) t)
                              (other-window 1))
                       (define-key org-mode-map
-                      [return] 'org-tree-open-in-new-window-cursor-stays)
+                      [S-return] 'org-tree-open-in-new-window-cursor-stays)
 ) ;; end of Org-mode configs
-
