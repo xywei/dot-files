@@ -65,5 +65,10 @@
                              (other-window 1))
                       (define-key org-mode-map
                       [return] 'org-tree-open-in-new-window-cursor-stays)
+                      ;;
+                      ;; Allow ignoring heading while export the content 
+                      ;; of subtrees
+                      (require 'ox-extra)
+                      (ox-extras-activate '(ignore-headlines))
 ) ;; end of Org-mode configs
 
