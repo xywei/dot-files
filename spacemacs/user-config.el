@@ -6,6 +6,10 @@
 ;; Make frame be able to resize to full height
 (setq frame-resize-pixelwise t)
 
+;;(setq ns-use-srgb-colorspace nil)
+(setq powerline-default-separator 'utf-8)
+(setq frame-resize-pixelwise t)
+
 ;;
 ;; Vertical split by default
 (setq split-height-threshold nil)
