@@ -311,20 +311,20 @@ Plug 'lervag/vimtex'
 " If :echo has("python3") returns 1, then you're done.
 " Otherwise, you may enable it by running: pip3 install neovim
 " To invoke omni function: Ctrl+x Ctrl+o
-" function! DoRemote(arg)
-  " UpdateRemotePlugins
-" endfunction
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Enable at startup
-" let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 " Disable auto-complete
-" let g:deoplete#disable_auto_complete = 1
+let g:deoplete#disable_auto_complete = 1
 " Initialize input_patterns
-" let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns = {}
 " Alternatively, use Ctrl+l to manually complete
-" inoremap <silent><expr><C-l> deoplete#mappings#manual_complete()
+inoremap <silent><expr><C-l> deoplete#mappings#manual_complete()
 
-" autocmd CompleteDone * pclose " To close preview window of deoplete automagically
+autocmd CompleteDone * pclose " To close preview window of deoplete automagically
 
 "--------------------------------------
 " deoplete-clang

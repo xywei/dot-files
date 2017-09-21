@@ -216,3 +216,6 @@ export PATH=$HOME/cli-utils:$PATH
 # https://github.com/conda/conda/issues/4552
 # added by Anaconda3 4.4.0 installer
 # export PATH="/home/xywei/anaconda3/bin:$PATH"
+
+# added by travis gem
+[ -f /home/xywei/.travis/travis.sh ] && source /home/xywei/.travis/travis.sh
