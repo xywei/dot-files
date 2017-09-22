@@ -8,6 +8,13 @@ See [this video](https://youtu.be/JXwS7z6Dqic) for more information about tmux.
 
 ## spacemacs
 
+Install emacs on Mac, as recommended by Spacemacs developers:
+```bash
+$ brew tap d12frosted/emacs-plus
+$ brew install emacs-plus
+$ brew linkapps emacs-plus
+```
+
 In `.spacemacs` file, load `spacemacs/user-init.el` in 
 `dotspacemacs/user-init ()` and load `spacemacs/user-config.el`
 in `dotspacemacs/user-config ()`.
