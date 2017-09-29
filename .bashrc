@@ -181,9 +181,9 @@ fi
 
 # Load Spack if it is under $HOME
 export SPACK_ROOT=$HOME/spack
-if [ ! -f $SPACK_ROOT/share/spack/setup-env.sh ]; then
+if [ -f ${SPACK_ROOT}/share/spack/setup-env.sh ]; then
   #echo Loading spack..
-  . $SPACK_ROOT/share/spack/setup-env.sh
+  . ${SPACK_ROOT}/share/spack/setup-env.sh
   #echo Loading spack.. Done.
   #echo Loading environment modules..
   MODULES_HOME=`spack location -i environment-modules`
