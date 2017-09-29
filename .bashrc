@@ -179,16 +179,17 @@ if hash xmodmap 2>/dev/null; then
     xmodmap -e "pointer = 1 6 3 4 5 2" 2>/dev/null
 fi
 
-# Spack is under $HOME
-#echo Loading spack..
+# Load Spack if it is under $HOME
 export SPACK_ROOT=$HOME/spack
-. $SPACK_ROOT/share/spack/setup-env.sh
-#echo Loading spack.. Done.
-
-#echo Loading environment modules..
-MODULES_HOME=`spack location -i environment-modules`
-source ${MODULES_HOME}/Modules/init/bash
-#echo Loading environment modules.. Done.
+if [ ! -f $SPACK_ROOT/share/spack/setup-env.sh ]; then
+  #echo Loading spack..
+  . $SPACK_ROOT/share/spack/setup-env.sh
+  #echo Loading spack.. Done.
+  #echo Loading environment modules..
+  MODULES_HOME=`spack location -i environment-modules`
+  source ${MODULES_HOME}/Modules/init/bash
+  #echo Loading environment modules.. Done.
+fi
 
 # echo Loading mpi..
 # spack load mpi
