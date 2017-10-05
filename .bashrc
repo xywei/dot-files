@@ -210,6 +210,8 @@ fi
 
 # Conda
 # export PATH=$PATH:$HOME/miniconda3/bin/
+alias act="source activate"
+alias dact="source deactivate"
 
 # Add cli-utils to PATH
 export PATH=$HOME/cli-utils:$PATH
@@ -220,3 +222,5 @@ export PATH=$HOME/cli-utils:$PATH
 
 # added by travis gem
 [ -f /home/xywei/.travis/travis.sh ] && source /home/xywei/.travis/travis.sh
+
+export PIP_REQUIRE_VIRTUALENV=false
