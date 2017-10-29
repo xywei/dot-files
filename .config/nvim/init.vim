@@ -114,7 +114,7 @@ if has('unix')
   endif
 endif
 
-let g:chromatica#enable_at_startup=1
+let g:chromatica#enable_at_startup=0
 let g:chromatica#highlight_feature_level=0
 
 "--------------------------------------
