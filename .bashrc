@@ -223,17 +223,26 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# Conda
-# export PATH=$PATH:$HOME/miniconda3/bin/
-alias act="source activate"
-alias dact="source deactivate"
+# Anaconda/Miniconda using alias instead of adding to PATH
+# See https://github.com/conda/conda/issues/4552
+if [ -d ~/miniconda3/bin ]; then
+  echo "Using miniconda3 via aliases"
+  alias act="source $HOME/miniconda3/bin/activate"
+  alias dact="source $HOME/miniconda3/bin/deactivate"
+  alias conda="$HOME/miniconda3/bin/conda"
+else
+  if [ -d ~/anaconda/bin ]; then
+    echo "Using anaconda via aliases"
+    alias act="source $HOME/anaconda/bin/activate"
+    alias dact="source $HOME/anaconda/bin/deactivate"
+    alias conda="$HOME/anaconda/bin/conda"
+  else
+    echo "Conda not found"
+  fi
+fi
 
 # Add cli-utils to PATH
 export PATH=$HOME/cli-utils:$PATH
-
-# https://github.com/conda/conda/issues/4552
-# added by Anaconda3 4.4.0 installer
-# export PATH="/home/xywei/anaconda3/bin:$PATH"
 
 # added by travis gem
 [ -f /home/xywei/.travis/travis.sh ] && source /home/xywei/.travis/travis.sh
