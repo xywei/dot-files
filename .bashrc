@@ -236,7 +236,7 @@ else
     alias act="source $HOME/anaconda/bin/activate"
     alias dact="source $HOME/anaconda/bin/deactivate"
     alias conda="$HOME/anaconda/bin/conda"
-  else
+  # else
     # echo "Conda not found"
   fi
 fi
