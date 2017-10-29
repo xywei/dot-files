@@ -106,8 +106,8 @@ if has('unix')
   " Assme that this a an Arch linux, using clang from pacman
   if s:uname == "Linux\n"
     " libclang in miniconda takes priority
-    if filereadable("~/miniconda/lib/libclang.so")
-      let g:chromatica#libclang_path='~/miniconda/lib/libclang.so'
+    if filereadable("~/miniconda3/lib/libclang.so")
+      let g:chromatica#libclang_path='~/miniconda3/lib/libclang.so'
     elseif filereadable("/usr/lib/libclang.so")
       let g:chromatica#libclang_path='/usr/lib/libclang.so'
     endif
