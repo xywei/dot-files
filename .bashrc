@@ -226,18 +226,18 @@ fi
 # Anaconda/Miniconda using alias instead of adding to PATH
 # See https://github.com/conda/conda/issues/4552
 if [ -d ~/miniconda3/bin ]; then
-  echo "Using miniconda3 via aliases"
+  # echo "Using miniconda3 via aliases"
   alias act="source $HOME/miniconda3/bin/activate"
   alias dact="source $HOME/miniconda3/bin/deactivate"
   alias conda="$HOME/miniconda3/bin/conda"
 else
   if [ -d ~/anaconda/bin ]; then
-    echo "Using anaconda via aliases"
+    # echo "Using anaconda via aliases"
     alias act="source $HOME/anaconda/bin/activate"
     alias dact="source $HOME/anaconda/bin/deactivate"
     alias conda="$HOME/anaconda/bin/conda"
   else
-    echo "Conda not found"
+    # echo "Conda not found"
   fi
 fi
 
