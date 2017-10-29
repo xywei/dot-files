@@ -434,6 +434,12 @@ let g:neoformat_basic_format_trim = 1
 Plug 'edkolev/promptline.vim'
 
 "--------------------------------------
+" Tmux statusline generator
+"--------------------------------------
+" Simple tmux statusline generator with support for powerline symbols and statusline / airline / lightline integration
+Plug 'edkolev/tmuxline.vim'
+
+"--------------------------------------
 " vim-devicons
 "--------------------------------------
 " This plugin must be loaded lastly

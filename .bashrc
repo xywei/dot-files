@@ -103,9 +103,19 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# overwrite with external promptlin
+# overwrite with external promptline
 if [ -f ~/cli-utils/promptline ]; then
   source ~/cli-utils/promptline
+fi
+
+if [[ `date +"%k"` -lt 18 ]] && [[ `date +"%k"` -gt 6  ]]; then
+  if [ -f ~/cli-utils/promptline_light ]; then
+    source ~/cli-utils/promptline_light
+  fi
+else
+  if [ -f ~/cli-utils/promptline_dark ]; then
+    source ~/cli-utils/promptline_dark
+  fi
 fi
 
 # If this is an xterm set the title to user@host:dir
