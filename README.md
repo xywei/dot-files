@@ -6,6 +6,14 @@ The .tmux.conf is a configuration file for tmux. To use, make a symlink of this 
 
 See [this video](https://youtu.be/JXwS7z6Dqic) for more information about tmux.
 
+### TPM
+
+Tmux plugin manager (TPM) is used for some plugins of Tmux. To use it, run
+```
+git submodule update --init .tumx/plugins/tpm
+```
+then within tmux, press `Prefix I` to finish setup.
+
 ## spacemacs
 
 Install emacs on Mac, as recommended by Spacemacs developers:

@@ -11,6 +11,13 @@ call plug#begin('~/.vim/plugged')
 " Plug 'w0rp/ale'
 
 "--------------------------------------
+" ack
+"--------------------------------------
+" Vim plugin for the Perl module / CLI script 'ack'
+Plug 'mileszs/ack.vim'
+nnoremap <Leader>a :Ack!<Space>
+
+"--------------------------------------
 " vim-obsession
 "--------------------------------------
 " A more powerful :mksession
