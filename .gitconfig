@@ -30,7 +30,7 @@
 [gpg]
         program = gpg2
 [commit]
-        gpgsign = false
+        gpgsign = true
 
 [color]
 	ui = auto
