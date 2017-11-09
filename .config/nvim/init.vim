@@ -498,7 +498,7 @@ call plug#end()
 " colorscheme solarized8_dark_flat
 
 " Time-based colorscheme
-if strftime("%H") < 6 || strftime("%H") > 18
+if strftime("%H") < 7 || strftime("%H") > 17
   colorscheme solarized8_dark_flat
 else
   colorscheme solarized8_light_flat
