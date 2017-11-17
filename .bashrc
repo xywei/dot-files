@@ -4,6 +4,9 @@ case $- in
       *) return;;
 esac
 
+# vi mode
+set -o vi
+export VISUAL=vim
 
 # Detect platform
 platform='unknown'
