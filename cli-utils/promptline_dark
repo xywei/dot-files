@@ -56,10 +56,26 @@ function __promptline_vcs_branch {
   local branch_symbol=" "
 
   # git
+  # text color based on status
   if hash git 2>/dev/null; then
+    local git_status="$(git status 2> /dev/null)"
+    if [[ $git_status =~ "nothing to commit, working tree clean" ]]; then
+      printf "%s" "${wrap}38;5;113${end_wrap}"
+    elif [[ $git_status =~ "Changes to be committed:" ]]; then
+      printf "%s" "${wrap}38;5;195${end_wrap}"
+    elif [[ $git_status =~ "Untracked files:" ]]; then
+      printf "%s" "${wrap}38;5;228${end_wrap}"
+    elif [[ $git_status =~ "no changes added to commit" ]]; then
+      printf "%s" "${wrap}38;5;219${end_wrap}"
+    else
+      printf "%s" ""
+    fi
+
     if branch=$( { git symbolic-ref --quiet HEAD || git rev-parse --short HEAD; } 2>/dev/null ); then
       branch=${branch##*/}
       printf "%s" "${branch_symbol}${branch:-unknown}"
+      commit=$(git rev-parse --short HEAD 2> /dev/null | sed "s/\(.*\)/@\1/")
+      printf "%s" " ${commit}"
       return
     fi
   fi

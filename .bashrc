@@ -4,6 +4,7 @@ case $- in
       *) return;;
 esac
 
+
 # Detect platform
 platform='unknown'
 unamestr=`uname`
