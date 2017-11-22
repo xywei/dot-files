@@ -111,3 +111,6 @@ huffman
 config
 param
 rtype
+numpy
+miniconda
+cmake
