@@ -4,6 +4,10 @@ case $- in
       *) return;;
 esac
 
+# vi mode
+set -o vi
+export VISUAL=vim
+
 # Detect platform
 platform='unknown'
 unamestr=`uname`
@@ -189,6 +193,8 @@ alias vi="nvim"
 # Run emacs with --no-window-system
 alias emacs="emacs -nw"
 
+alias py="PYOPENCL_CTX=':' python"
+
 # Disable middle click paste
 if hash xmodmap 2>/dev/null; then
     xmodmap -e "pointer = 1 6 3 4 5 2" 2>/dev/null
@@ -241,11 +247,21 @@ else
   fi
 fi
 
+# bash-insulter (requires bash 4 to work)
+# For MacOS X, install bash 4 from `homebrew install bash`,
+# add /usr/local/bin/bash to /etc/shells, and run `chsh -s /usr/local/bin/bash`
+if [ "$platform" == 'linux' ]; then
+  if [ -f $HOME/cli-utils/bash-insulter/src/bash.command-not-found ]; then
+     . $HOME/cli-utils/bash-insulter/src/bash.command-not-found
+  fi
+elif [ "$platform" == 'darwin' ]; then
+  if [ -f $HOME/cli-utils/bash.command-not-found-osx ]; then
+     . $HOME/cli-utils/bash.command-not-found-osx
+  fi
+fi
+
 # Add cli-utils to PATH
 export PATH=$HOME/cli-utils:$PATH
-
-# added by travis gem
-[ -f /home/xywei/.travis/travis.sh ] && source /home/xywei/.travis/travis.sh
 
 export PIP_REQUIRE_VIRTUALENV=false
 

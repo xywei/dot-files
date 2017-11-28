@@ -116,3 +116,6 @@ pyopencl
 foldmethod
 vim
 multipole
+numpy
+miniconda
+cmake

@@ -13,6 +13,7 @@ DOT_FILES=(\
   ".gitconfig"\
   ".gitignore_global"\
   ".gdbinit"\
+  ".inputrc"\
   ".latexmkrc"\
   ".jrnl_config"\
   ".gdbinit"\
@@ -75,8 +76,8 @@ then
   else
     echo "Target $HOME/$entry exists and is not a symlin!"
     echo "Please check out that file, make your decisions, and re-run this script."
-    read -p "Do you wish to skip this one and continue installing the rest?" yn
     while true; do
+      read -p "Do you wish to skip this one and continue installing the rest?" yn
       case $yn in
         [Yy]* ) echo Skipping..; break;;
         [Nn]* ) echo Exiting..; exit 1;;

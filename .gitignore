@@ -39,5 +39,9 @@
 # Vim spell file (binary)
 *.spl
 
+# Tmux plugin manager
+.tmux/plugins/*
+!.tmux/plugins/tpm
+
 # Tmux saved sessions
-.tmux/resurrect/*
+.tmux/resurrect
