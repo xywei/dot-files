@@ -248,3 +248,7 @@ export PATH=$HOME/cli-utils:$PATH
 [ -f /home/xywei/.travis/travis.sh ] && source /home/xywei/.travis/travis.sh
 
 export PIP_REQUIRE_VIRTUALENV=false
+
+if [ -f ~/.cpanrc ]; then
+  . ~/.cpanrc
+fi

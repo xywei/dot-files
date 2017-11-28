@@ -111,3 +111,8 @@ huffman
 config
 param
 rtype
+filetype
+pyopencl
+foldmethod
+vim
+multipole
