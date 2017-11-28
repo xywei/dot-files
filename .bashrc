@@ -193,7 +193,10 @@ alias vi="nvim"
 # Run emacs with --no-window-system
 alias emacs="emacs -nw"
 
-alias py="PYOPENCL_CTX=':' python"
+alias ta="tmux attach -t"
+
+alias py="DYLD_LIBRARY_PATH=$HOME/opt/lib PYOPENCL_CTX=':' python"
+alias pt="DYLD_LIBRARY_PATH=$HOME/opt/lib PYOPENCL_CTX=':' pytest"
 
 # Disable middle click paste
 if hash xmodmap 2>/dev/null; then

@@ -4,3 +4,4 @@
 
 echo -ne "\033]50;SetProfile=nighttime\a"
 source promptline_dark
+clear
