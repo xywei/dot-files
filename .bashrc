@@ -8,6 +8,8 @@ esac
 set -o vi
 export VISUAL=vim
 
+alias reload='source ~/.bashrc'
+
 # Detect platform
 platform='unknown'
 unamestr=`uname`
@@ -116,9 +118,15 @@ if [[ `date +"%k"` -lt 18 ]] && [[ `date +"%k"` -gt 6  ]]; then
   if [ -f ~/cli-utils/promptline_light ]; then
     source ~/cli-utils/promptline_light
   fi
+  if [ -f ~/.taskrc_light ]; then
+    export TASKRC=$HOME/.taskrc_light
+  fi
 else
   if [ -f ~/cli-utils/promptline_dark ]; then
     source ~/cli-utils/promptline_dark
+  fi
+  if [ -f ~/.taskrc_dark ]; then
+    export TASKRC=$HOME/.taskrc_dark
   fi
 fi
 
@@ -265,5 +273,7 @@ fi
 
 # Add cli-utils to PATH
 export PATH=$HOME/cli-utils:$PATH
+
+export EDITOR="nvim"
 
 export PIP_REQUIRE_VIRTUALENV=false
