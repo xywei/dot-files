@@ -1,6 +1,15 @@
-#!/bin/sh
+#!/bin/bash
+
+# This wrapper script unifies clipboard tools into one
+# interface, which simplifies configuration process for
+# other programs.
+
 if [[ "$(uname)" =~ Darwin ]]; then
   cat - | reattach-to-user-namespace pbcopy
 else
-  cat - | /usr/bin/xclip -in -selection clipboard
+  if [[ -f /usr/bin/xclip ]]; then
+    cat - | /usr/bin/xclip -in -selection clipboard
+  elif [[ -f /usr/bin/xsel ]]; then
+    cat - | /usr/bin/xsel -ib
+  fi
 fi
