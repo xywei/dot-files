@@ -281,20 +281,3 @@ export PIP_REQUIRE_VIRTUALENV=false
 if [ -f ~/.cpanrc ]; then
   . ~/.cpanrc
 fi
-
-function clcache() {
-  echo "Purghing CL caches"
-  rm -Rf ~/.pocl
-  echo "."
-  rm -Rf ~/.cache/pocl
-  echo "."
-  rm -Rf ~/.cache/pytools
-  echo "."
-  rm -Rf ~/.cache/pyopencl/
-  echo "."
-  rm -Rf ~/.nv/ComputeCache/
-  echo "."
-  rm -Rf ~/._occa
-  echo "Done"
-  return 0
-}
