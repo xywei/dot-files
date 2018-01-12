@@ -203,6 +203,11 @@ alias emacs="emacs -nw"
 
 alias ta="tmux attach -t"
 
+# https://raimue.blog/2013/01/30/tmux-update-environment/
+if [ -f $HOME/cli-utils/tmux.bash ]; then
+  source $HOME/cli-utils/tmux.bash
+fi
+
 alias py="DYLD_LIBRARY_PATH=$HOME/opt/lib PYOPENCL_CTX=':' python"
 alias pt="DYLD_LIBRARY_PATH=$HOME/opt/lib PYOPENCL_CTX=':' pytest"
 
