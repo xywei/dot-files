@@ -119,3 +119,8 @@ multipole
 numpy
 miniconda
 cmake
+interpolatory
+knl
+f0
+f1
+Postprocessing

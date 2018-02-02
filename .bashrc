@@ -281,6 +281,8 @@ export PATH=$HOME/cli-utils:$PATH
 
 export EDITOR="nvim"
 
+export IGNOREEOF=10   # Shell only exists after the 10th consecutive Ctrl-d
+
 export PIP_REQUIRE_VIRTUALENV=false
 
 if [ -f ~/.cpanrc ]; then

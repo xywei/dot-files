@@ -518,8 +518,8 @@ endif
 
 " Set python interpreter on Linux (ignore virtualenv and conda)
 if s:uname == "Linux\n"
-  let g:python_host_prog='/usr/bin/python2'
-  let g:python3_host_prog='/usr/bin/python3'
+  " let g:python_host_prog='/usr/bin/python2'
+  " let g:python3_host_prog='/usr/bin/python3'
 endif
 
 " Exploit vim's fuzzy search
