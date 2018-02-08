@@ -15,6 +15,9 @@ awk -i inplace '!/^lib\//' .gitignore_global
 awk -i inplace '!/^*.jpg/' .gitignore_global
 awk -i inplace '!/^*.html/' .gitignore_global
 
+# Don't ignore Python stuff like __init__.py
+awk -i inplace '!/^\[_@\]*/' .gitignore_global
+
 # Add more that suites my needs
 echo .gdb_history >> .gitignore_global
 
