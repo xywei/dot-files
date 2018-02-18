@@ -279,7 +279,10 @@ fi
 # Add cli-utils to PATH
 export PATH=$HOME/cli-utils:$PATH
 
+export PATH=$HOME/opt/usr/bin:$PATH
+
 export EDITOR="nvim"
+export VISUAL="nvim"
 
 export IGNOREEOF=10   # Shell only exists after the 10th consecutive Ctrl-d
 
