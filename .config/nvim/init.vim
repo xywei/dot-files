@@ -449,7 +449,7 @@ Plug 'edkolev/promptline.vim'
 " Tmux statusline generator
 "--------------------------------------
 " Simple tmux statusline generator with support for powerline symbols and statusline / airline / lightline integration
-Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim'
 
 "--------------------------------------
 " vim-devicons
@@ -502,6 +502,12 @@ if strftime("%H") < 7 || strftime("%H") > 17
   colorscheme solarized8_dark_flat
 else
   colorscheme solarized8_light_flat
+endif
+
+if $COLORTHEME == 'light'
+  colorscheme solarized8_light_flat
+else
+  colorscheme solarized8_dark_flat
 endif
 
 """""""""""""""""""""""""""""""""""""""
