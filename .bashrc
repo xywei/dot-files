@@ -8,6 +8,12 @@ esac
 set -o vi
 export VISUAL=vim
 
+# when set, use a consistent, time-independent
+# color theme across terminal, vim and tmux
+# unset COLORTHEME
+export COLORTHEME=dark
+#export COLORTHEME=light
+
 alias reload='source ~/.bashrc'
 
 # Detect platform
@@ -130,6 +136,22 @@ else
   fi
 fi
 
+if [ "$COLORTHEME" = dark ]; then
+  if [ -f ~/cli-utils/promptline_dark ]; then
+    source ~/cli-utils/promptline_dark
+  fi
+  if [ -f ~/.taskrc_dark ]; then
+    export TASKRC=$HOME/.taskrc_dark
+  fi
+elif [ "$COLORTHEME" = light ]; then
+  if [ -f ~/cli-utils/promptline_light ]; then
+    source ~/cli-utils/promptline_light
+  fi
+  if [ -f ~/.taskrc_light ]; then
+    export TASKRC=$HOME/.taskrc_light
+  fi
+fi
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -186,6 +208,20 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+fi
+
+# brew install bash-completion
+if [[ $platform == 'darwin' ]]; then
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
+fi
+
+# simple tmsu bash completion
+# must be sourced after bash_completion
+# https://github.com/oniony/TMSU/issues/78
+if [ -f $HOME/cli-utils/tmsu_bash_completion ]; then
+  . $HOME/cli-utils/tmsu_bash_completion
 fi
 
 export TERM=screen-256color
@@ -279,7 +315,10 @@ fi
 # Add cli-utils to PATH
 export PATH=$HOME/cli-utils:$PATH
 
+export PATH=$HOME/opt/usr/bin:$PATH
+
 export EDITOR="nvim"
+export VISUAL="nvim"
 
 export IGNOREEOF=10   # Shell only exists after the 10th consecutive Ctrl-d
 
