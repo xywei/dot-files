@@ -43,11 +43,11 @@ Plug 'xywei/vim-dealii-prm'
 "syntax enable
 " For older neovim versions (<0.1.5), we need to
 " export NVIM_TUI_ENABLE_TRUE_COLOR=1
-if exists("&termguicolors")
-  set termguicolors
-else
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
+" if exists("&termguicolors")
+  " set termguicolors
+" else
+  " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" endif
 "let g:solarized_menu=0
 "set background=dark " or dark
 " Custom settings
@@ -60,13 +60,15 @@ endif
 " vim-solarized8
 "--------------------------------------
 " another truecolor theme more actively maintained
-Plug 'lifepillar/vim-solarized8'
-let g:solarized_visibility = "high"
-let g:solarized_diffmode = "high"
+" Plug 'lifepillar/vim-solarized8'
+" let g:solarized_visibility = "high"
+" let g:solarized_diffmode = "high"
+"
+" NOTE: truecolor stuff does not work well with airline & tmuxline
 
 "" two commands to switch between dark/light themes
-command Light :colorscheme solarized8_light_flat
-command Dark :colorscheme solarized8_dark_flat
+" command Light :colorscheme solarized8_light_flat
+" command Dark :colorscheme solarized8_dark_flat
 
 "--------------------------------------
 " Neomake
@@ -262,8 +264,17 @@ Plug 'vim-airline/vim-airline-themes'
 " to show glyphs
 let g:airline_powerline_fonts = 1
 
+" dark
+" let g:airline_theme='bubblegum'
+" light
+let g:airline_theme='sol'
+
 " to display all buffers when there's only one tab open<Paste>
 let g:airline#extensions#tabline#enabled = 1
+
+" enable/disable tmuxline integration >
+let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
 
 "--------------------------------------
 " vim-operator-user
@@ -308,12 +319,6 @@ autocmd FileType py nnoremap <buffer><leader>= :0,$!yapf<Cr>
 "--------------------------------------
 " requires sudo pip3 install jedi
 " Plug 'davidhalter/jedi-vim'
-
-"--------------------------------------
-" vimtex
-"--------------------------------------
-" modern vim plugin
-Plug 'lervag/vimtex'
 
 "--------------------------------------
 " deoplete
@@ -438,18 +443,28 @@ let g:neoformat_basic_format_retab = 1
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 1
 
+"--------------------------------------
+" vimtex
+"--------------------------------------
+" modern vim plugin
+Plug 'lervag/vimtex'
+let g:vimtex_compiler_progname = 'nvr'
+" this casuses issues in airline
+" let g:vimtex_compiler_latexmk= 'callback'
+let g:vimtex_view_method = 'zathura'
 
 "--------------------------------------
 " Generate a fast shell prompt
 "--------------------------------------
 "  with powerline symbols and airline colors
 Plug 'edkolev/promptline.vim'
+autocmd VimEnter * PromptlineSnapshot! ~/.shell_prompt.sh airline
 
 "--------------------------------------
 " Tmux statusline generator
 "--------------------------------------
 " Simple tmux statusline generator with support for powerline symbols and statusline / airline / lightline integration
-" Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim'
 
 "--------------------------------------
 " vim-devicons
@@ -494,21 +509,28 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 " Add plugins to &runtimepath
 call plug#end()
 
+let g:promptline_preset = {
+        \'a' : [ promptline#slices#python_virtualenv(), promptline#slices#conda_env() ],
+        \'b' : [ promptline#slices#user() ],
+        \'c' : [ promptline#slices#cwd() ],
+        \'y' : [ promptline#slices#vcs_branch() ],
+        \'warn' : [ promptline#slices#last_exit_code() ]}
+
 " Colorscheme must be set after plug#end()
 " colorscheme solarized8_dark_flat
 
 " Time-based colorscheme
-if strftime("%H") < 7 || strftime("%H") > 17
-  colorscheme solarized8_dark_flat
-else
-  colorscheme solarized8_light_flat
-endif
-
-if $COLORTHEME == 'light'
-  colorscheme solarized8_light_flat
-else
-  colorscheme solarized8_dark_flat
-endif
+" if strftime("%H") < 7 || strftime("%H") > 17
+"   colorscheme solarized8_dark_flat
+" else
+"   colorscheme solarized8_light_flat
+" endif
+" 
+" if $COLORTHEME == 'light'
+"   colorscheme solarized8_light_flat
+" else
+"   colorscheme solarized8_dark_flat
+" endif
 
 """""""""""""""""""""""""""""""""""""""
 " Other configurations
@@ -524,8 +546,8 @@ endif
 
 " Set python interpreter on Linux (ignore virtualenv and conda)
 if s:uname == "Linux\n"
-  " let g:python_host_prog='/usr/bin/python2'
-  " let g:python3_host_prog='/usr/bin/python3'
+  let g:python_host_prog='/usr/bin/python2'
+  let g:python3_host_prog='/usr/bin/python3'
 endif
 
 " Exploit vim's fuzzy search
