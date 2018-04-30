@@ -148,14 +148,15 @@ let g:tagbar_type_tex = {
 " CtrlP
 "--------------------------------------
 " Fuzzy search file/buffer/tag...
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " Keybinding
-" let g:ctrlp_map = '<c-p>'
+let g:ctrlp_map = '<c-p>'
 " Configs
-" let g:ctrlp_cmd = 'CtrlP'
-" let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 " Ignore irrelevant files
-" set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 " let g:ctrlp_custom_ignore = {
 " \ 'dir':  '\v[\/]\.(git|hg|svn)$',
@@ -507,7 +508,9 @@ endif
 if $COLORTHEME == 'light'
   colorscheme solarized8_light_flat
 else
-  colorscheme solarized8_dark_flat
+  if $COLORTHEME == 'dark'
+    colorscheme solarized8_dark_flat
+  endif
 endif
 
 """""""""""""""""""""""""""""""""""""""
@@ -665,6 +668,16 @@ nnoremap <C-K> :call FindCursor()<CR>
 "--------------------------------------
 set scrolloff=8
 set nolazyredraw
+
+"--------------------------------------
+" Tab management
+"--------------------------------------
+nnoremap tn :tabnew<Space>
+nnoremap tj :tabnext<CR>
+nnoremap tk :tabprev<CR>
+nnoremap th :tabfirst<CR>
+nnoremap tl :tablast<CR>
+
 
 "--------------------------------------
 " Restore cursor position, window position, and last search after running a
